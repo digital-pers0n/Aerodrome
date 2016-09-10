@@ -9,10 +9,75 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>AerodromeHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>AerodromeUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>AerodromeWiFi.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>aerwld.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>CE3983EE1C29DAE6000CE230</key>
+		<key>CE0CB6711D69E84F00093E61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE123FE61D6725650087E75E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE44821E1D42B705000B9625</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE4482361D42B796000B9625</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE44824B1D42B7F1000B9625</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE44825D1D42BAE5000B9625</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE5D446E1D51246800732414</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE5D447F1D51271300732414</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CECD23CE1D69EA8500A980E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEF2DE851D69B7B400CEF1DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,146 +7,670 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE065B461C2ADCA4009D25FE /* Aerodrome.m in Sources */ = {isa = PBXBuildFile; fileRef = CE065B451C2ADCA4009D25FE /* Aerodrome.m */; settings = {ASSET_TAGS = (); }; };
-		CE2FA55D1C46C02A0016F4A0 /* AirPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3984051C29DB77000CE230 /* AirPort.framework */; };
-		CE3983F41C29DAE6000CE230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3983F31C29DAE6000CE230 /* AppDelegate.m */; };
-		CE3983F71C29DAE6000CE230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3983F61C29DAE6000CE230 /* main.m */; };
-		CE3983F91C29DAE6000CE230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3983F81C29DAE6000CE230 /* Assets.xcassets */; };
-		CE3983FC1C29DAE6000CE230 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3983FA1C29DAE6000CE230 /* MainMenu.xib */; };
-		CE3984041C29DB56000CE230 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3984031C29DB56000CE230 /* CoreWLAN.framework */; };
+		CE0105B91D6F0FB50051B57E /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5A2CC61D494875007CC678 /* CoreWLAN.framework */; };
+		CE0105BB1D6F12B20051B57E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0105BA1D6F12B20051B57E /* Security.framework */; };
+		CE0CB6751D69E84F00093E61 /* AerodromeWlan.h in Headers */ = {isa = PBXBuildFile; fileRef = CE0CB6741D69E84F00093E61 /* AerodromeWlan.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE0CB6791D69E84F00093E61 /* AerodromeWiFi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */; };
+		CE0CB67A1D69E84F00093E61 /* AerodromeWiFi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE0CB67E1D69E87000093E61 /* AerodromeWiFi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */; };
+		CE2262A21D6DE0C000EEB159 /* NSDictionary+AERNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2262A01D6DE0C000EEB159 /* NSDictionary+AERNetwork.h */; settings = {ASSET_TAGS = (); }; };
+		CE2262A31D6DE0C000EEB159 /* NSDictionary+AERNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2262A11D6DE0C000EEB159 /* NSDictionary+AERNetwork.m */; settings = {ASSET_TAGS = (); }; };
+		CE2D27561D58C02700F715A0 /* NSStatusItem+AERStausItem.h in Headers */ = {isa = PBXBuildFile; fileRef = CE2D27541D58C02700F715A0 /* NSStatusItem+AERStausItem.h */; settings = {ASSET_TAGS = (); }; };
+		CE2D27571D58C02700F715A0 /* NSStatusItem+AERStausItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D27551D58C02700F715A0 /* NSStatusItem+AERStausItem.m */; settings = {ASSET_TAGS = (); }; };
+		CE4482241D42B705000B9625 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4482231D42B705000B9625 /* AppDelegate.m */; };
+		CE4482271D42B705000B9625 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4482261D42B705000B9625 /* main.m */; };
+		CE4482651D42BAE5000B9625 /* AerodromeUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE44825E1D42BAE5000B9625 /* AerodromeUI.framework */; };
+		CE4482661D42BAE5000B9625 /* AerodromeUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE44825E1D42BAE5000B9625 /* AerodromeUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE44826C1D42C5F3000B9625 /* AERMenuItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = CE44826A1D42C5F3000B9625 /* AERMenuItemView.h */; settings = {ASSET_TAGS = (); }; };
+		CE44826D1D42C5F3000B9625 /* AERMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE44826B1D42C5F3000B9625 /* AERMenuItemView.m */; settings = {ASSET_TAGS = (); }; };
+		CE567DB51D74280D00C926F2 /* NSMenu+UpdateMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE567DB41D74280D00C926F2 /* NSMenu+UpdateMenu.m */; settings = {ASSET_TAGS = (); }; };
+		CE567DB81D744AF000C926F2 /* NSDictionary+AERIcons.h in Headers */ = {isa = PBXBuildFile; fileRef = CE567DB61D744AF000C926F2 /* NSDictionary+AERIcons.h */; settings = {ASSET_TAGS = (); }; };
+		CE567DB91D744AF000C926F2 /* NSDictionary+AERIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = CE567DB71D744AF000C926F2 /* NSDictionary+AERIcons.m */; settings = {ASSET_TAGS = (); }; };
+		CE567DBB1D759E1500C926F2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE567DBA1D759E1500C926F2 /* IOKit.framework */; };
+		CE586A901D64F01E004739A1 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5A2CC61D494875007CC678 /* CoreWLAN.framework */; };
+		CE6A470D1D525DFD007B50B6 /* AERController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A470C1D525DFD007B50B6 /* AERController.m */; settings = {ASSET_TAGS = (); }; };
+		CE6A47141D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = CE6A47121D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.h */; settings = {ASSET_TAGS = (); }; };
+		CE6A47151D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A47131D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.m */; settings = {ASSET_TAGS = (); }; };
+		CE7147DE1D4FCC4C00492469 /* AERStatusMenuItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7147DC1D4FCC4C00492469 /* AERStatusMenuItemView.h */; settings = {ASSET_TAGS = (); }; };
+		CE7147DF1D4FCC4C00492469 /* AERStatusMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7147DD1D4FCC4C00492469 /* AERStatusMenuItemView.m */; settings = {ASSET_TAGS = (); }; };
+		CE7147E21D4FE47500492469 /* NSMenu+AERMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7147E01D4FE47500492469 /* NSMenu+AERMenu.h */; settings = {ASSET_TAGS = (); }; };
+		CE7147E31D4FE47500492469 /* NSMenu+AERMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7147E11D4FE47500492469 /* NSMenu+AERMenu.m */; settings = {ASSET_TAGS = (); }; };
+		CE76CEAB1D47DB1B00938773 /* AEROptions.h in Headers */ = {isa = PBXBuildFile; fileRef = CE76CEAA1D47DB1B00938773 /* AEROptions.h */; settings = {ASSET_TAGS = (); }; };
+		CE92DB531D48D24E000987A0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE92DB521D48D24E000987A0 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		CE96F1A11D63593100006BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE96F1A01D63593100006BA4 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		CECD23D41D69EA8500A980E1 /* aerwld.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23D31D69EA8500A980E1 /* aerwld.m */; };
+		CECD23D61D69EA8500A980E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23D51D69EA8500A980E1 /* main.m */; };
+		CECD23DA1D69EA8500A980E1 /* aerwld.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = CECD23CF1D69EA8500A980E1 /* aerwld.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CECD23E21D69EFB200A980E1 /* AERWLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CECD23E01D69EFB200A980E1 /* AERWLClient.h */; settings = {ASSET_TAGS = (); }; };
+		CECD23E31D69EFB200A980E1 /* AERWLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23E11D69EFB200A980E1 /* AERWLClient.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23E61D69F05A00A980E1 /* AERWLService.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23E51D69F05A00A980E1 /* AERWLService.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23E81D69F57500A980E1 /* aerwl_ioctl.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23E71D69F57500A980E1 /* aerwl_ioctl.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23EA1D69F5FE00A980E1 /* aerwl_ioctl.h in Headers */ = {isa = PBXBuildFile; fileRef = CECD23E91D69F5FE00A980E1 /* aerwl_ioctl.h */; settings = {ASSET_TAGS = (); }; };
+		CECD23EE1D6AFCC500A980E1 /* AERHelperCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23EC1D6AFCC500A980E1 /* AERHelperCreateController.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23EF1D6AFCC500A980E1 /* AERHelperCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECD23ED1D6AFCC500A980E1 /* AERHelperCreateController.xib */; settings = {ASSET_TAGS = (); }; };
+		CECD23F51D6B071300A980E1 /* AERHelperScan.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23F31D6B071300A980E1 /* AERHelperScan.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23F61D6B071300A980E1 /* AERHelperScan.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECD23F41D6B071300A980E1 /* AERHelperScan.xib */; settings = {ASSET_TAGS = (); }; };
+		CECD23FA1D6B512500A980E1 /* AERWLNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = CECD23F81D6B512500A980E1 /* AERWLNetwork.h */; settings = {ASSET_TAGS = (); }; };
+		CECD23FB1D6B512500A980E1 /* AERWLNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23F91D6B512500A980E1 /* AERWLNetwork.m */; settings = {ASSET_TAGS = (); }; };
+		CECD23FC1D6B52B000A980E1 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5A2CC61D494875007CC678 /* CoreWLAN.framework */; };
+		CECD24001D6CAD6B00A980E1 /* AERHelperPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD23FF1D6CAD6B00A980E1 /* AERHelperPreferences.m */; settings = {ASSET_TAGS = (); }; };
+		CECD24041D6CADA500A980E1 /* AERHelperPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD24021D6CADA500A980E1 /* AERHelperPreferencesController.m */; settings = {ASSET_TAGS = (); }; };
+		CECD24051D6CADA500A980E1 /* AERHelperPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECD24031D6CADA500A980E1 /* AERHelperPreferencesController.xib */; settings = {ASSET_TAGS = (); }; };
+		CEF2DE8A1D69B7B400CEF1DD /* AERHelperDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF2DE891D69B7B400CEF1DD /* AERHelperDelegate.m */; };
+		CEF2DE8D1D69B7B400CEF1DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF2DE8C1D69B7B400CEF1DD /* main.m */; };
+		CEF2DE8F1D69B7B400CEF1DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF2DE8E1D69B7B400CEF1DD /* Assets.xcassets */; };
+		CEF2DE921D69B7B400CEF1DD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF2DE901D69B7B400CEF1DD /* MainMenu.xib */; };
+		CEF2DE971D69B87000CEF1DD /* AerodromeHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = CEF2DE861D69B7B400CEF1DD /* AerodromeHelper.app */; };
+		CEF2DE9D1D69BCBA00CEF1DD /* AERHelperJoinController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF2DE9B1D69BCBA00CEF1DD /* AERHelperJoinController.m */; settings = {ASSET_TAGS = (); }; };
+		CEF2DE9E1D69BCBA00CEF1DD /* AERHelperJoinController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF2DE9C1D69BCBA00CEF1DD /* AERHelperJoinController.xib */; settings = {ASSET_TAGS = (); }; };
+		CEF327621D7899FA007818A9 /* AirPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE674A671D493C7900FDD56A /* AirPort.framework */; };
+		CEF327631D789A08007818A9 /* AirPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE674A671D493C7900FDD56A /* AirPort.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CE0CB6771D69E84F00093E61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE4482171D42B705000B9625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE0CB6711D69E84F00093E61;
+			remoteInfo = AerodromeWlan;
+		};
+		CE4482631D42BAE5000B9625 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE4482171D42B705000B9625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE44825D1D42BAE5000B9625;
+			remoteInfo = AerodromeUI;
+		};
+		CECD23D81D69EA8500A980E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE4482171D42B705000B9625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CECD23CE1D69EA8500A980E1;
+			remoteInfo = aerwld;
+		};
+		CEF2DE981D69B89500CEF1DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE4482171D42B705000B9625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEF2DE851D69B7B400CEF1DD;
+			remoteInfo = AerodromeHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE4482461D42B796000B9625 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE4482581D42B7F2000B9625 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE4482661D42BAE5000B9625 /* AerodromeUI.framework in Embed Frameworks */,
+				CE0CB67A1D69E84F00093E61 /* AerodromeWiFi.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CECD23DE1D69EA8500A980E1 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				CECD23DA1D69EA8500A980E1 /* aerwld.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		CE065B441C2ADCA4009D25FE /* Aerodrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aerodrome.h; sourceTree = "<group>"; };
-		CE065B451C2ADCA4009D25FE /* Aerodrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aerodrome.m; sourceTree = "<group>"; };
-		CE3983EF1C29DAE6000CE230 /* Aerodrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aerodrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE3983F21C29DAE6000CE230 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CE3983F31C29DAE6000CE230 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE3983F61C29DAE6000CE230 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CE3983F81C29DAE6000CE230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE3983FB1C29DAE6000CE230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CE3983FD1C29DAE6000CE230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE3984031C29DB56000CE230 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
-		CE3984051C29DB77000CE230 /* AirPort.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirPort.framework; path = /System/Library/PrivateFrameworks/AirPort.framework; sourceTree = "<absolute>"; };
-		CE3984081C29DC20000CE230 /* apple80211_ioctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_ioctl.h; sourceTree = "<group>"; };
-		CE3984091C29DC20000CE230 /* apple80211_var.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_var.h; sourceTree = "<group>"; };
-		CE39840A1C29DC20000CE230 /* apple80211_wps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_wps.h; sourceTree = "<group>"; };
-		CE39840B1C29DC20000CE230 /* Apple80211.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211.h; sourceTree = "<group>"; };
-		CE39840C1C29DC20000CE230 /* Apple80211Err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211Err.h; sourceTree = "<group>"; };
-		CE58BE1E1C345AD300845D16 /* Apple80211.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apple80211.framework; path = ../../../../../System/Library/PrivateFrameworks/Apple80211.framework; sourceTree = "<group>"; };
+		CE0105BA1D6F12B20051B57E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AerodromeWiFi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0CB6741D69E84F00093E61 /* AerodromeWlan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerodromeWlan.h; sourceTree = "<group>"; };
+		CE0CB6761D69E84F00093E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE2262A01D6DE0C000EEB159 /* NSDictionary+AERNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+AERNetwork.h"; path = "../AerodromeWiFi/NSDictionary+AERNetwork.h"; sourceTree = "<group>"; };
+		CE2262A11D6DE0C000EEB159 /* NSDictionary+AERNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+AERNetwork.m"; path = "../AerodromeWiFi/NSDictionary+AERNetwork.m"; sourceTree = "<group>"; };
+		CE2D27541D58C02700F715A0 /* NSStatusItem+AERStausItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusItem+AERStausItem.h"; sourceTree = "<group>"; };
+		CE2D27551D58C02700F715A0 /* NSStatusItem+AERStausItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStatusItem+AERStausItem.m"; sourceTree = "<group>"; };
+		CE44821F1D42B705000B9625 /* Aerodrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aerodrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4482221D42B705000B9625 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE4482231D42B705000B9625 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE4482261D42B705000B9625 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE44822D1D42B705000B9625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE44825E1D42BAE5000B9625 /* AerodromeUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AerodromeUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4482601D42BAE5000B9625 /* AerodromeUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerodromeUI.h; sourceTree = "<group>"; };
+		CE4482621D42BAE5000B9625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE44826A1D42C5F3000B9625 /* AERMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERMenuItemView.h; sourceTree = "<group>"; };
+		CE44826B1D42C5F3000B9625 /* AERMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERMenuItemView.m; sourceTree = "<group>"; };
+		CE567DB31D74280D00C926F2 /* NSMenu+UpdateMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+UpdateMenu.h"; sourceTree = "<group>"; };
+		CE567DB41D74280D00C926F2 /* NSMenu+UpdateMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenu+UpdateMenu.m"; sourceTree = "<group>"; };
+		CE567DB61D744AF000C926F2 /* NSDictionary+AERIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AERIcons.h"; sourceTree = "<group>"; };
+		CE567DB71D744AF000C926F2 /* NSDictionary+AERIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AERIcons.m"; sourceTree = "<group>"; };
+		CE567DBA1D759E1500C926F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CE5A2CC61D494875007CC678 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		CE5D44821D51271400732414 /* AerodromeWiFi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerodromeWiFi.h; sourceTree = "<group>"; };
+		CE5D44841D51271400732414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE5D448D1D51279900732414 /* apple80211_ioctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_ioctl.h; sourceTree = "<group>"; };
+		CE5D448E1D51279900732414 /* apple80211_var.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_var.h; sourceTree = "<group>"; };
+		CE5D448F1D51279900732414 /* apple80211_wps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apple80211_wps.h; sourceTree = "<group>"; };
+		CE5D44901D51279900732414 /* Apple80211.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211.h; sourceTree = "<group>"; };
+		CE5D44911D51279900732414 /* Apple80211Err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple80211Err.h; sourceTree = "<group>"; };
+		CE5D44981D5129EE00732414 /* AERNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERNetwork.h; sourceTree = "<group>"; };
+		CE5D44991D5129EE00732414 /* AERNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERNetwork.m; sourceTree = "<group>"; };
+		CE674A671D493C7900FDD56A /* AirPort.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirPort.framework; path = /System/Library/PrivateFrameworks/AirPort.framework; sourceTree = "<absolute>"; };
+		CE6A470B1D525DFD007B50B6 /* AERController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERController.h; sourceTree = "<group>"; };
+		CE6A470C1D525DFD007B50B6 /* AERController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERController.m; sourceTree = "<group>"; };
+		CE6A47121D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+AERNetworkMenuItem.h"; sourceTree = "<group>"; };
+		CE6A47131D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+AERNetworkMenuItem.m"; sourceTree = "<group>"; };
+		CE7147DC1D4FCC4C00492469 /* AERStatusMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERStatusMenuItemView.h; sourceTree = "<group>"; };
+		CE7147DD1D4FCC4C00492469 /* AERStatusMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERStatusMenuItemView.m; sourceTree = "<group>"; };
+		CE7147E01D4FE47500492469 /* NSMenu+AERMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+AERMenu.h"; sourceTree = "<group>"; };
+		CE7147E11D4FE47500492469 /* NSMenu+AERMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenu+AERMenu.m"; sourceTree = "<group>"; };
+		CE76CEAA1D47DB1B00938773 /* AEROptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEROptions.h; sourceTree = "<group>"; };
+		CE92DB521D48D24E000987A0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		CE96F1A01D63593100006BA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CECD23CF1D69EA8500A980E1 /* aerwld.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = aerwld.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECD23D11D69EA8500A980E1 /* aerwldProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aerwldProtocol.h; sourceTree = "<group>"; };
+		CECD23D21D69EA8500A980E1 /* aerwld.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aerwld.h; sourceTree = "<group>"; };
+		CECD23D31D69EA8500A980E1 /* aerwld.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aerwld.m; sourceTree = "<group>"; };
+		CECD23D51D69EA8500A980E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CECD23D71D69EA8500A980E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECD23E01D69EFB200A980E1 /* AERWLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERWLClient.h; sourceTree = "<group>"; };
+		CECD23E11D69EFB200A980E1 /* AERWLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERWLClient.m; sourceTree = "<group>"; };
+		CECD23E41D69F05A00A980E1 /* AERWLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERWLService.h; sourceTree = "<group>"; };
+		CECD23E51D69F05A00A980E1 /* AERWLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERWLService.m; sourceTree = "<group>"; };
+		CECD23E71D69F57500A980E1 /* aerwl_ioctl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aerwl_ioctl.m; sourceTree = "<group>"; };
+		CECD23E91D69F5FE00A980E1 /* aerwl_ioctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aerwl_ioctl.h; sourceTree = "<group>"; };
+		CECD23EB1D6AFCC500A980E1 /* AERHelperCreateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERHelperCreateController.h; sourceTree = "<group>"; };
+		CECD23EC1D6AFCC500A980E1 /* AERHelperCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERHelperCreateController.m; sourceTree = "<group>"; };
+		CECD23ED1D6AFCC500A980E1 /* AERHelperCreateController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AERHelperCreateController.xib; sourceTree = "<group>"; };
+		CECD23F21D6B071300A980E1 /* AERHelperScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERHelperScan.h; sourceTree = "<group>"; };
+		CECD23F31D6B071300A980E1 /* AERHelperScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERHelperScan.m; sourceTree = "<group>"; };
+		CECD23F41D6B071300A980E1 /* AERHelperScan.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AERHelperScan.xib; sourceTree = "<group>"; };
+		CECD23F81D6B512500A980E1 /* AERWLNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERWLNetwork.h; sourceTree = "<group>"; };
+		CECD23F91D6B512500A980E1 /* AERWLNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERWLNetwork.m; sourceTree = "<group>"; };
+		CECD23FE1D6CAD6B00A980E1 /* AERHelperPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERHelperPreferences.h; sourceTree = "<group>"; };
+		CECD23FF1D6CAD6B00A980E1 /* AERHelperPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERHelperPreferences.m; sourceTree = "<group>"; };
+		CECD24011D6CADA500A980E1 /* AERHelperPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERHelperPreferencesController.h; sourceTree = "<group>"; };
+		CECD24021D6CADA500A980E1 /* AERHelperPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERHelperPreferencesController.m; sourceTree = "<group>"; };
+		CECD24031D6CADA500A980E1 /* AERHelperPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AERHelperPreferencesController.xib; sourceTree = "<group>"; };
+		CEE131CF1D60F59A0093AB2A /* Apple80211.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apple80211.framework; path = ../../../../../../System/Library/PrivateFrameworks/Apple80211.framework; sourceTree = "<group>"; };
+		CEF2DE861D69B7B400CEF1DD /* AerodromeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerodromeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF2DE881D69B7B400CEF1DD /* AERHelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERHelperDelegate.h; sourceTree = "<group>"; };
+		CEF2DE891D69B7B400CEF1DD /* AERHelperDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERHelperDelegate.m; sourceTree = "<group>"; };
+		CEF2DE8C1D69B7B400CEF1DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEF2DE8E1D69B7B400CEF1DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEF2DE911D69B7B400CEF1DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CEF2DE931D69B7B400CEF1DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEF2DE9A1D69BCBA00CEF1DD /* AERHelperJoinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERHelperJoinController.h; sourceTree = "<group>"; };
+		CEF2DE9B1D69BCBA00CEF1DD /* AERHelperJoinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERHelperJoinController.m; sourceTree = "<group>"; };
+		CEF2DE9C1D69BCBA00CEF1DD /* AERHelperJoinController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AERHelperJoinController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE3983EC1C29DAE6000CE230 /* Frameworks */ = {
+		CE0CB66E1D69E84F00093E61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3984041C29DB56000CE230 /* CoreWLAN.framework in Frameworks */,
-				CE2FA55D1C46C02A0016F4A0 /* AirPort.framework in Frameworks */,
+				CECD23FC1D6B52B000A980E1 /* CoreWLAN.framework in Frameworks */,
+				CEF327621D7899FA007818A9 /* AirPort.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44821C1D42B705000B9625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE567DBB1D759E1500C926F2 /* IOKit.framework in Frameworks */,
+				CE0CB6791D69E84F00093E61 /* AerodromeWiFi.framework in Frameworks */,
+				CE4482651D42BAE5000B9625 /* AerodromeUI.framework in Frameworks */,
+				CE586A901D64F01E004739A1 /* CoreWLAN.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44825A1D42BAE5000B9625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CECD23CC1D69EA8500A980E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF327631D789A08007818A9 /* AirPort.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF2DE831D69B7B400CEF1DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0105BB1D6F12B20051B57E /* Security.framework in Frameworks */,
+				CE0CB67E1D69E87000093E61 /* AerodromeWiFi.framework in Frameworks */,
+				CE0105B91D6F0FB50051B57E /* CoreWLAN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE3983E61C29DAE6000CE230 = {
+		CE0CB6731D69E84F00093E61 /* AerodromeWiFi */ = {
 			isa = PBXGroup;
 			children = (
-				CE3984071C29DBA8000CE230 /* Frameworks */,
-				CE3983F11C29DAE6000CE230 /* Aerodrome */,
-				CE3983F01C29DAE6000CE230 /* Products */,
+				CE2262A01D6DE0C000EEB159 /* NSDictionary+AERNetwork.h */,
+				CE2262A11D6DE0C000EEB159 /* NSDictionary+AERNetwork.m */,
+				CE0CB6741D69E84F00093E61 /* AerodromeWlan.h */,
+				CEE139931D708D4F003A62AB /* AERWLClient */,
+				CEE139941D708D73003A62AB /* AERWLNetwork */,
+				CECD23D01D69EA8500A980E1 /* aerwld */,
+				CE0CB6761D69E84F00093E61 /* Info.plist */,
+			);
+			name = AerodromeWiFi;
+			path = AerodromeWlan;
+			sourceTree = "<group>";
+		};
+		CE2D27581D58C03F00F715A0 /* AERStatusItem */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D27541D58C02700F715A0 /* NSStatusItem+AERStausItem.h */,
+				CE2D27551D58C02700F715A0 /* NSStatusItem+AERStausItem.m */,
+			);
+			name = AERStatusItem;
+			sourceTree = "<group>";
+		};
+		CE4482161D42B705000B9625 = {
+			isa = PBXGroup;
+			children = (
+				CE4482211D42B705000B9625 /* Aerodrome */,
+				CE44825F1D42BAE5000B9625 /* AerodromeUI */,
+				CEF2DE871D69B7B400CEF1DD /* AerodromeHelper */,
+				CE0CB6731D69E84F00093E61 /* AerodromeWiFi */,
+				CE5A2CC81D494B63007CC678 /* Frameworks */,
+				CE5D44811D51271400732414 /* AerodromeWiFi-generic */,
+				CE4482201D42B705000B9625 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CE3983F01C29DAE6000CE230 /* Products */ = {
+		CE4482201D42B705000B9625 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE3983EF1C29DAE6000CE230 /* Aerodrome.app */,
+				CE44821F1D42B705000B9625 /* Aerodrome.app */,
+				CE44825E1D42BAE5000B9625 /* AerodromeUI.framework */,
+				CEF2DE861D69B7B400CEF1DD /* AerodromeHelper.app */,
+				CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */,
+				CECD23CF1D69EA8500A980E1 /* aerwld.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE3983F11C29DAE6000CE230 /* Aerodrome */ = {
+		CE4482211D42B705000B9625 /* Aerodrome */ = {
 			isa = PBXGroup;
 			children = (
-				CE39840D1C29DC2F000CE230 /* Headers */,
-				CE065B441C2ADCA4009D25FE /* Aerodrome.h */,
-				CE065B451C2ADCA4009D25FE /* Aerodrome.m */,
-				CE3983F21C29DAE6000CE230 /* AppDelegate.h */,
-				CE3983F31C29DAE6000CE230 /* AppDelegate.m */,
-				CE3983F81C29DAE6000CE230 /* Assets.xcassets */,
-				CE3983FA1C29DAE6000CE230 /* MainMenu.xib */,
-				CE3983FD1C29DAE6000CE230 /* Info.plist */,
-				CE3983F51C29DAE6000CE230 /* Supporting Files */,
+				CE567DB31D74280D00C926F2 /* NSMenu+UpdateMenu.h */,
+				CE567DB41D74280D00C926F2 /* NSMenu+UpdateMenu.m */,
+				CE96F1A01D63593100006BA4 /* Assets.xcassets */,
+				CE4482221D42B705000B9625 /* AppDelegate.h */,
+				CE4482231D42B705000B9625 /* AppDelegate.m */,
+				CE92DB521D48D24E000987A0 /* MainMenu.xib */,
+				CE6A470B1D525DFD007B50B6 /* AERController.h */,
+				CE6A470C1D525DFD007B50B6 /* AERController.m */,
+				CE44822D1D42B705000B9625 /* Info.plist */,
+				CE4482251D42B705000B9625 /* Supporting Files */,
 			);
 			path = Aerodrome;
 			sourceTree = "<group>";
 		};
-		CE3983F51C29DAE6000CE230 /* Supporting Files */ = {
+		CE4482251D42B705000B9625 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE3983F61C29DAE6000CE230 /* main.m */,
+				CE4482261D42B705000B9625 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CE3984071C29DBA8000CE230 /* Frameworks */ = {
+		CE44825F1D42BAE5000B9625 /* AerodromeUI */ = {
 			isa = PBXGroup;
 			children = (
-				CE58BE1E1C345AD300845D16 /* Apple80211.framework */,
-				CE3984051C29DB77000CE230 /* AirPort.framework */,
-				CE3984031C29DB56000CE230 /* CoreWLAN.framework */,
+				CE567DB61D744AF000C926F2 /* NSDictionary+AERIcons.h */,
+				CE567DB71D744AF000C926F2 /* NSDictionary+AERIcons.m */,
+				CE76CEAA1D47DB1B00938773 /* AEROptions.h */,
+				CE2D27581D58C03F00F715A0 /* AERStatusItem */,
+				CE6A47161D538D79007B50B6 /* AERMenuItem */,
+				CED5C89B1D460635004EA1A8 /* AERMenu */,
+				CE4482601D42BAE5000B9625 /* AerodromeUI.h */,
+				CE4482621D42BAE5000B9625 /* Info.plist */,
+			);
+			path = AerodromeUI;
+			sourceTree = "<group>";
+		};
+		CE5A2CC81D494B63007CC678 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE567DBA1D759E1500C926F2 /* IOKit.framework */,
+				CE0105BA1D6F12B20051B57E /* Security.framework */,
+				CEE131CF1D60F59A0093AB2A /* Apple80211.framework */,
+				CE674A671D493C7900FDD56A /* AirPort.framework */,
+				CE5A2CC61D494875007CC678 /* CoreWLAN.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE39840D1C29DC2F000CE230 /* Headers */ = {
+		CE5D44811D51271400732414 /* AerodromeWiFi-generic */ = {
 			isa = PBXGroup;
 			children = (
-				CE3984081C29DC20000CE230 /* apple80211_ioctl.h */,
-				CE3984091C29DC20000CE230 /* apple80211_var.h */,
-				CE39840A1C29DC20000CE230 /* apple80211_wps.h */,
-				CE39840B1C29DC20000CE230 /* Apple80211.h */,
-				CE39840C1C29DC20000CE230 /* Apple80211Err.h */,
+				CE5D44971D5127A500732414 /* Airport Headers */,
+				CE5D44821D51271400732414 /* AerodromeWiFi.h */,
+				CE5D44981D5129EE00732414 /* AERNetwork.h */,
+				CE5D44991D5129EE00732414 /* AERNetwork.m */,
+				CE5D44841D51271400732414 /* Info.plist */,
 			);
-			name = Headers;
+			name = "AerodromeWiFi-generic";
+			path = AerodromeWiFi;
+			sourceTree = "<group>";
+		};
+		CE5D44971D5127A500732414 /* Airport Headers */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D448D1D51279900732414 /* apple80211_ioctl.h */,
+				CE5D448E1D51279900732414 /* apple80211_var.h */,
+				CE5D448F1D51279900732414 /* apple80211_wps.h */,
+				CE5D44901D51279900732414 /* Apple80211.h */,
+				CE5D44911D51279900732414 /* Apple80211Err.h */,
+			);
+			name = "Airport Headers";
+			sourceTree = "<group>";
+		};
+		CE6A47161D538D79007B50B6 /* AERMenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A47121D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.h */,
+				CE6A47131D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.m */,
+			);
+			name = AERMenuItem;
+			sourceTree = "<group>";
+		};
+		CECD23D01D69EA8500A980E1 /* aerwld */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23D11D69EA8500A980E1 /* aerwldProtocol.h */,
+				CECD23E41D69F05A00A980E1 /* AERWLService.h */,
+				CECD23E51D69F05A00A980E1 /* AERWLService.m */,
+				CECD23D21D69EA8500A980E1 /* aerwld.h */,
+				CECD23D31D69EA8500A980E1 /* aerwld.m */,
+				CECD23D51D69EA8500A980E1 /* main.m */,
+				CECD23D71D69EA8500A980E1 /* Info.plist */,
+			);
+			name = aerwld;
+			path = ../aerwld;
+			sourceTree = "<group>";
+		};
+		CECD23F01D6AFCE200A980E1 /* AERCreateDialog */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23EB1D6AFCC500A980E1 /* AERHelperCreateController.h */,
+				CECD23EC1D6AFCC500A980E1 /* AERHelperCreateController.m */,
+				CECD23ED1D6AFCC500A980E1 /* AERHelperCreateController.xib */,
+			);
+			name = AERCreateDialog;
+			sourceTree = "<group>";
+		};
+		CECD23F11D6AFCF700A980E1 /* AERJoinDialog */ = {
+			isa = PBXGroup;
+			children = (
+				CEF2DE9A1D69BCBA00CEF1DD /* AERHelperJoinController.h */,
+				CEF2DE9B1D69BCBA00CEF1DD /* AERHelperJoinController.m */,
+				CEF2DE9C1D69BCBA00CEF1DD /* AERHelperJoinController.xib */,
+			);
+			name = AERJoinDialog;
+			sourceTree = "<group>";
+		};
+		CECD23F71D6B071900A980E1 /* AERScanDialog */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23F21D6B071300A980E1 /* AERHelperScan.h */,
+				CECD23F31D6B071300A980E1 /* AERHelperScan.m */,
+				CECD23F41D6B071300A980E1 /* AERHelperScan.xib */,
+			);
+			name = AERScanDialog;
+			sourceTree = "<group>";
+		};
+		CECD24061D6CADBD00A980E1 /* AERPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23FE1D6CAD6B00A980E1 /* AERHelperPreferences.h */,
+				CECD23FF1D6CAD6B00A980E1 /* AERHelperPreferences.m */,
+				CECD24011D6CADA500A980E1 /* AERHelperPreferencesController.h */,
+				CECD24021D6CADA500A980E1 /* AERHelperPreferencesController.m */,
+				CECD24031D6CADA500A980E1 /* AERHelperPreferencesController.xib */,
+			);
+			name = AERPreferences;
+			sourceTree = "<group>";
+		};
+		CED5C89B1D460635004EA1A8 /* AERMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE7147DC1D4FCC4C00492469 /* AERStatusMenuItemView.h */,
+				CE7147DD1D4FCC4C00492469 /* AERStatusMenuItemView.m */,
+				CE44826A1D42C5F3000B9625 /* AERMenuItemView.h */,
+				CE44826B1D42C5F3000B9625 /* AERMenuItemView.m */,
+				CE7147E01D4FE47500492469 /* NSMenu+AERMenu.h */,
+				CE7147E11D4FE47500492469 /* NSMenu+AERMenu.m */,
+			);
+			name = AERMenu;
+			sourceTree = "<group>";
+		};
+		CEE139931D708D4F003A62AB /* AERWLClient */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23E71D69F57500A980E1 /* aerwl_ioctl.m */,
+				CECD23E91D69F5FE00A980E1 /* aerwl_ioctl.h */,
+				CECD23E01D69EFB200A980E1 /* AERWLClient.h */,
+				CECD23E11D69EFB200A980E1 /* AERWLClient.m */,
+			);
+			name = AERWLClient;
+			sourceTree = "<group>";
+		};
+		CEE139941D708D73003A62AB /* AERWLNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23F81D6B512500A980E1 /* AERWLNetwork.h */,
+				CECD23F91D6B512500A980E1 /* AERWLNetwork.m */,
+			);
+			name = AERWLNetwork;
+			sourceTree = "<group>";
+		};
+		CEF2DE871D69B7B400CEF1DD /* AerodromeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CECD23F01D6AFCE200A980E1 /* AERCreateDialog */,
+				CECD23F71D6B071900A980E1 /* AERScanDialog */,
+				CECD23F11D6AFCF700A980E1 /* AERJoinDialog */,
+				CECD24061D6CADBD00A980E1 /* AERPreferences */,
+				CEF2DE881D69B7B400CEF1DD /* AERHelperDelegate.h */,
+				CEF2DE891D69B7B400CEF1DD /* AERHelperDelegate.m */,
+				CEF2DE8E1D69B7B400CEF1DD /* Assets.xcassets */,
+				CEF2DE901D69B7B400CEF1DD /* MainMenu.xib */,
+				CEF2DE931D69B7B400CEF1DD /* Info.plist */,
+				CEF2DE8B1D69B7B400CEF1DD /* Supporting Files */,
+			);
+			path = AerodromeHelper;
+			sourceTree = "<group>";
+		};
+		CEF2DE8B1D69B7B400CEF1DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEF2DE8C1D69B7B400CEF1DD /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CE0CB66F1D69E84F00093E61 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECD23EA1D69F5FE00A980E1 /* aerwl_ioctl.h in Headers */,
+				CECD23FA1D6B512500A980E1 /* AERWLNetwork.h in Headers */,
+				CE2262A21D6DE0C000EEB159 /* NSDictionary+AERNetwork.h in Headers */,
+				CE0CB6751D69E84F00093E61 /* AerodromeWlan.h in Headers */,
+				CECD23E21D69EFB200A980E1 /* AERWLClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44825B1D42BAE5000B9625 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE567DB81D744AF000C926F2 /* NSDictionary+AERIcons.h in Headers */,
+				CE7147DE1D4FCC4C00492469 /* AERStatusMenuItemView.h in Headers */,
+				CE76CEAB1D47DB1B00938773 /* AEROptions.h in Headers */,
+				CE6A47141D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.h in Headers */,
+				CE2D27561D58C02700F715A0 /* NSStatusItem+AERStausItem.h in Headers */,
+				CE7147E21D4FE47500492469 /* NSMenu+AERMenu.h in Headers */,
+				CE44826C1D42C5F3000B9625 /* AERMenuItemView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		CE3983EE1C29DAE6000CE230 /* Aerodrome */ = {
+		CE0CB6711D69E84F00093E61 /* AerodromeWiFi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE3984001C29DAE6000CE230 /* Build configuration list for PBXNativeTarget "Aerodrome" */;
+			buildConfigurationList = CE0CB67B1D69E84F00093E61 /* Build configuration list for PBXNativeTarget "AerodromeWiFi" */;
 			buildPhases = (
-				CE3983EB1C29DAE6000CE230 /* Sources */,
-				CE3983EC1C29DAE6000CE230 /* Frameworks */,
-				CE3983ED1C29DAE6000CE230 /* Resources */,
+				CE0CB66D1D69E84F00093E61 /* Sources */,
+				CE0CB66E1D69E84F00093E61 /* Frameworks */,
+				CE0CB66F1D69E84F00093E61 /* Headers */,
+				CE0CB6701D69E84F00093E61 /* Resources */,
+				CECD23DE1D69EA8500A980E1 /* Embed XPC Services */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CECD23D91D69EA8500A980E1 /* PBXTargetDependency */,
+			);
+			name = AerodromeWiFi;
+			productName = AerodromeWlan;
+			productReference = CE0CB6721D69E84F00093E61 /* AerodromeWiFi.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CE44821E1D42B705000B9625 /* Aerodrome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE4482301D42B705000B9625 /* Build configuration list for PBXNativeTarget "Aerodrome" */;
+			buildPhases = (
+				CE44821B1D42B705000B9625 /* Sources */,
+				CE44821C1D42B705000B9625 /* Frameworks */,
+				CE44821D1D42B705000B9625 /* Resources */,
+				CE4482461D42B796000B9625 /* Embed XPC Services */,
+				CE4482581D42B7F2000B9625 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE4482641D42BAE5000B9625 /* PBXTargetDependency */,
+				CEF2DE991D69B89500CEF1DD /* PBXTargetDependency */,
+				CE0CB6781D69E84F00093E61 /* PBXTargetDependency */,
+			);
+			name = Aerodrome;
+			productName = Aerodrome;
+			productReference = CE44821F1D42B705000B9625 /* Aerodrome.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE44825D1D42BAE5000B9625 /* AerodromeUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE4482671D42BAE5000B9625 /* Build configuration list for PBXNativeTarget "AerodromeUI" */;
+			buildPhases = (
+				CE4482591D42BAE5000B9625 /* Sources */,
+				CE44825A1D42BAE5000B9625 /* Frameworks */,
+				CE44825B1D42BAE5000B9625 /* Headers */,
+				CE44825C1D42BAE5000B9625 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Aerodrome;
-			productName = Aerodrome;
-			productReference = CE3983EF1C29DAE6000CE230 /* Aerodrome.app */;
+			name = AerodromeUI;
+			productName = AerodromeUI;
+			productReference = CE44825E1D42BAE5000B9625 /* AerodromeUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CECD23CE1D69EA8500A980E1 /* aerwld */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CECD23DD1D69EA8500A980E1 /* Build configuration list for PBXNativeTarget "aerwld" */;
+			buildPhases = (
+				CECD23CB1D69EA8500A980E1 /* Sources */,
+				CECD23CC1D69EA8500A980E1 /* Frameworks */,
+				CECD23CD1D69EA8500A980E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = aerwld;
+			productName = aerwld;
+			productReference = CECD23CF1D69EA8500A980E1 /* aerwld.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
+		CEF2DE851D69B7B400CEF1DD /* AerodromeHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEF2DE941D69B7B400CEF1DD /* Build configuration list for PBXNativeTarget "AerodromeHelper" */;
+			buildPhases = (
+				CEF2DE821D69B7B400CEF1DD /* Sources */,
+				CEF2DE831D69B7B400CEF1DD /* Frameworks */,
+				CEF2DE841D69B7B400CEF1DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AerodromeHelper;
+			productName = AerodromeHelper;
+			productReference = CEF2DE861D69B7B400CEF1DD /* AerodromeHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CE3983E71C29DAE6000CE230 /* Project object */ = {
+		CE4482171D42B705000B9625 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AER;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = digital_person;
 				TargetAttributes = {
-					CE3983EE1C29DAE6000CE230 = {
+					CE0CB6711D69E84F00093E61 = {
 						CreatedOnToolsVersion = 7.0.1;
+					};
+					CE44821E1D42B705000B9625 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					CE44825D1D42BAE5000B9625 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					CECD23CE1D69EA8500A980E1 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					CEF2DE851D69B7B400CEF1DD = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = D6VUYL8L2E;
 					};
 				};
 			};
-			buildConfigurationList = CE3983EA1C29DAE6000CE230 /* Build configuration list for PBXProject "Aerodrome" */;
+			buildConfigurationList = CE44821A1D42B705000B9625 /* Build configuration list for PBXProject "Aerodrome" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -154,46 +678,157 @@
 				en,
 				Base,
 			);
-			mainGroup = CE3983E61C29DAE6000CE230;
-			productRefGroup = CE3983F01C29DAE6000CE230 /* Products */;
+			mainGroup = CE4482161D42B705000B9625;
+			productRefGroup = CE4482201D42B705000B9625 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE3983EE1C29DAE6000CE230 /* Aerodrome */,
+				CE44821E1D42B705000B9625 /* Aerodrome */,
+				CE44825D1D42BAE5000B9625 /* AerodromeUI */,
+				CE0CB6711D69E84F00093E61 /* AerodromeWiFi */,
+				CECD23CE1D69EA8500A980E1 /* aerwld */,
+				CEF2DE851D69B7B400CEF1DD /* AerodromeHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE3983ED1C29DAE6000CE230 /* Resources */ = {
+		CE0CB6701D69E84F00093E61 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3983F91C29DAE6000CE230 /* Assets.xcassets in Resources */,
-				CE3983FC1C29DAE6000CE230 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44821D1D42B705000B9625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE96F1A11D63593100006BA4 /* Assets.xcassets in Resources */,
+				CE92DB531D48D24E000987A0 /* MainMenu.xib in Resources */,
+				CEF2DE971D69B87000CEF1DD /* AerodromeHelper.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44825C1D42BAE5000B9625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CECD23CD1D69EA8500A980E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF2DE841D69B7B400CEF1DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF2DE9E1D69BCBA00CEF1DD /* AERHelperJoinController.xib in Resources */,
+				CECD24051D6CADA500A980E1 /* AERHelperPreferencesController.xib in Resources */,
+				CECD23F61D6B071300A980E1 /* AERHelperScan.xib in Resources */,
+				CEF2DE8F1D69B7B400CEF1DD /* Assets.xcassets in Resources */,
+				CECD23EF1D6AFCC500A980E1 /* AERHelperCreateController.xib in Resources */,
+				CEF2DE921D69B7B400CEF1DD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE3983EB1C29DAE6000CE230 /* Sources */ = {
+		CE0CB66D1D69E84F00093E61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE065B461C2ADCA4009D25FE /* Aerodrome.m in Sources */,
-				CE3983F71C29DAE6000CE230 /* main.m in Sources */,
-				CE3983F41C29DAE6000CE230 /* AppDelegate.m in Sources */,
+				CE2262A31D6DE0C000EEB159 /* NSDictionary+AERNetwork.m in Sources */,
+				CECD23FB1D6B512500A980E1 /* AERWLNetwork.m in Sources */,
+				CECD23E81D69F57500A980E1 /* aerwl_ioctl.m in Sources */,
+				CECD23E31D69EFB200A980E1 /* AERWLClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE44821B1D42B705000B9625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE4482271D42B705000B9625 /* main.m in Sources */,
+				CE6A470D1D525DFD007B50B6 /* AERController.m in Sources */,
+				CE4482241D42B705000B9625 /* AppDelegate.m in Sources */,
+				CE567DB51D74280D00C926F2 /* NSMenu+UpdateMenu.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE4482591D42BAE5000B9625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE44826D1D42C5F3000B9625 /* AERMenuItemView.m in Sources */,
+				CE7147E31D4FE47500492469 /* NSMenu+AERMenu.m in Sources */,
+				CE2D27571D58C02700F715A0 /* NSStatusItem+AERStausItem.m in Sources */,
+				CE6A47151D538D65007B50B6 /* NSMenuItem+AERNetworkMenuItem.m in Sources */,
+				CE567DB91D744AF000C926F2 /* NSDictionary+AERIcons.m in Sources */,
+				CE7147DF1D4FCC4C00492469 /* AERStatusMenuItemView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CECD23CB1D69EA8500A980E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECD23D61D69EA8500A980E1 /* main.m in Sources */,
+				CECD23D41D69EA8500A980E1 /* aerwld.m in Sources */,
+				CECD23E61D69F05A00A980E1 /* AERWLService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF2DE821D69B7B400CEF1DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECD24041D6CADA500A980E1 /* AERHelperPreferencesController.m in Sources */,
+				CECD23F51D6B071300A980E1 /* AERHelperScan.m in Sources */,
+				CEF2DE8D1D69B7B400CEF1DD /* main.m in Sources */,
+				CEF2DE8A1D69B7B400CEF1DD /* AERHelperDelegate.m in Sources */,
+				CECD24001D6CAD6B00A980E1 /* AERHelperPreferences.m in Sources */,
+				CECD23EE1D6AFCC500A980E1 /* AERHelperCreateController.m in Sources */,
+				CEF2DE9D1D69BCBA00CEF1DD /* AERHelperJoinController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CE0CB6781D69E84F00093E61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE0CB6711D69E84F00093E61 /* AerodromeWiFi */;
+			targetProxy = CE0CB6771D69E84F00093E61 /* PBXContainerItemProxy */;
+		};
+		CE4482641D42BAE5000B9625 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE44825D1D42BAE5000B9625 /* AerodromeUI */;
+			targetProxy = CE4482631D42BAE5000B9625 /* PBXContainerItemProxy */;
+		};
+		CECD23D91D69EA8500A980E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CECD23CE1D69EA8500A980E1 /* aerwld */;
+			targetProxy = CECD23D81D69EA8500A980E1 /* PBXContainerItemProxy */;
+		};
+		CEF2DE991D69B89500CEF1DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEF2DE851D69B7B400CEF1DD /* AerodromeHelper */;
+			targetProxy = CEF2DE981D69B89500CEF1DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		CE3983FA1C29DAE6000CE230 /* MainMenu.xib */ = {
+		CEF2DE901D69B7B400CEF1DD /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE3983FB1C29DAE6000CE230 /* Base */,
+				CEF2DE911D69B7B400CEF1DD /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -201,7 +836,59 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CE3983FE1C29DAE6000CE230 /* Debug */ = {
+		CE0CB67C1D69E84F00093E61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = AerodromeWlan/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeWiFi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CE0CB67D1D69E84F00093E61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = AerodromeWlan/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeWiFi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CE44822E1D42B705000B9625 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,14 +924,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		CE3983FF1C29DAE6000CE230 /* Release */ = {
+		CE44822F1D42B705000B9625 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,16 +961,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		CE3984011C29DAE6000CE230 /* Debug */ = {
+		CE4482311D42B705000B9625 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -292,28 +978,131 @@
 				);
 				INFOPLIST_FILE = Aerodrome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = void.Aerodrome;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.aerodrome";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CE4482321D42B705000B9625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
+				INFOPLIST_FILE = Aerodrome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.aerodrome";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CE4482681D42BAE5000B9625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = AerodromeUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CE4482691D42BAE5000B9625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = AerodromeUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CECD23DB1D69EA8500A980E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"@executable_path/../../../../../Frameworks",
+				);
+				INFOPLIST_FILE = aerwld/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.aerwld";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CECD23DC1D69EA8500A980E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"@executable_path/../../../../../Frameworks",
+				);
+				INFOPLIST_FILE = aerwld/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.aerwld";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CEF2DE951D69B7B400CEF1DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AerodromeHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeHelper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		CE3984021C29DAE6000CE230 /* Release */ = {
+		CEF2DE961D69B7B400CEF1DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
-				);
-				INFOPLIST_FILE = Aerodrome/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = void.Aerodrome;
+				INFOPLIST_FILE = AerodromeHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "void.digital-person.AerodromeHelper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -321,25 +1110,61 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE3983EA1C29DAE6000CE230 /* Build configuration list for PBXProject "Aerodrome" */ = {
+		CE0CB67B1D69E84F00093E61 /* Build configuration list for PBXNativeTarget "AerodromeWiFi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE3983FE1C29DAE6000CE230 /* Debug */,
-				CE3983FF1C29DAE6000CE230 /* Release */,
+				CE0CB67C1D69E84F00093E61 /* Debug */,
+				CE0CB67D1D69E84F00093E61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE3984001C29DAE6000CE230 /* Build configuration list for PBXNativeTarget "Aerodrome" */ = {
+		CE44821A1D42B705000B9625 /* Build configuration list for PBXProject "Aerodrome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE3984011C29DAE6000CE230 /* Debug */,
-				CE3984021C29DAE6000CE230 /* Release */,
+				CE44822E1D42B705000B9625 /* Debug */,
+				CE44822F1D42B705000B9625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE4482301D42B705000B9625 /* Build configuration list for PBXNativeTarget "Aerodrome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE4482311D42B705000B9625 /* Debug */,
+				CE4482321D42B705000B9625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE4482671D42BAE5000B9625 /* Build configuration list for PBXNativeTarget "AerodromeUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE4482681D42BAE5000B9625 /* Debug */,
+				CE4482691D42BAE5000B9625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CECD23DD1D69EA8500A980E1 /* Build configuration list for PBXNativeTarget "aerwld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CECD23DB1D69EA8500A980E1 /* Debug */,
+				CECD23DC1D69EA8500A980E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEF2DE941D69B7B400CEF1DD /* Build configuration list for PBXNativeTarget "AerodromeHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEF2DE951D69B7B400CEF1DD /* Debug */,
+				CEF2DE961D69B7B400CEF1DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CE3983E71C29DAE6000CE230 /* Project object */;
+	rootObject = CE4482171D42B705000B9625 /* Project object */;
 }

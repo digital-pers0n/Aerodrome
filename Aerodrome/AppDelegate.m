@@ -2,155 +2,79 @@
 //  AppDelegate.m
 //  Aerodrome
 //
-//  Created by digital_person on 12/22/15.
-//  Copyright © 2015 digital_person. All rights reserved.
+//  Created by Terminator on 7/22/16.
+//
 //
 
+
+
 #import "AppDelegate.h"
-#import "Aerodrome.h"
+#import "AERMenuItemView.h"
+#import "AEROptions.h"
+#import "AERStatusMenuItemView.h"
+#import "NSMenu+AERMenu.h"
+#import "AERController.h"
+
+#import "NSMenuItem+AERNetworkMenuItem.h"
+
+//#import "AERWLInterface+AERWLScanMenu.h"
+//#import "AERWLInterface+Icons.h"
+
+#import "NSMenu+UpdateMenu.h"
+
+#import "NSStatusItem+AERStausItem.h"
+
+#import "NSDictionary+AERIcons.h"
+#import "AERWLClient.h"
+
+//#import "AERJoinDialog.h"
+//#import "AERCreateNetworkDialog.h"
+//#import "AERScanWindow.h"
+#import "AEROptions.h"
 #import <CoreWLAN/CoreWLAN.h>
-#import <QuartzCore/QuartzCore.h>
+#import <crt_externs.h>
+#import <IOKit/pwr_mgt/IOPMLib.h>
 
 
-#define POWER_OFF           @"Switch Wi-Fi On"
-#define POWER_ON            @"Switch Wi-Fi Off"
+extern CFStringRef SCDynamicStoreCopyComputerName();
 
-#define STATUS_ON           @"Wi-Fi: On"
-#define STATUS_OFF          @"Wi-Fi: Off"
-#define STATUS_SCAN         @"Wi-Fi: Looking For Networks"
-#define STATUS_CONNECT      @"Wi-Fi: Running"
-
-#define STATUS_MENU_ICON                [NSImage imageNamed:@"testON"]
-#define STATUS_MENU_ICON_CONNECTED		[NSImage imageNamed:@"test"]
-#define STATUS_MENU_ICON_OFF            [NSImage imageNamed:@"testOff"]
-#define STATUS_MENU_ICON_IBSS           [NSImage imageNamed:@"testIBSS"]
 
 @interface AppDelegate ()
+{
+    IOPMAssertionID assertionID;
+}
 
 @property (weak) IBOutlet NSWindow *window;
+
 @end
 
 @implementation AppDelegate
-
-@synthesize statusMenu;
-@synthesize currentInterface;
-//@synthesize connection;
-
-
-
--(void)applicationWillFinishLaunching:(NSNotification *)notification
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-    ProcessSerialNumber psn = {0, kCurrentProcess};
-    
-    TransformProcessType(&psn, kProcessTransformToUIElementApplication);
     
     self->execute_queue = dispatch_queue_create("thread", nil);
+    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
-    
-    
-    
-    connection = [[Aerodrome alloc] init];
-    
-    self.currentInterface = [CWInterface interfaceWithName:[connection apple80211Interface]];
-    
+
 
     
+    interface = [[AERController alloc] init];
     
-    [disconnectMenuItem setHidden:YES];
-    
-    
-    NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    
-    statusItem = [bar statusItemWithLength:NSSquareStatusItemLength];
-    
-    
-    imageON = STATUS_MENU_ICON;
-    imageOFF = STATUS_MENU_ICON_OFF;
-    imageConnected = STATUS_MENU_ICON_CONNECTED;
-    imageIBSS = STATUS_MENU_ICON_IBSS;
-    
-    CGFloat point = 100;
-    
-    
-    
-    [imageIBSS setTemplate:YES];
-    [imageConnected setTemplate:YES];
-    [imageON setTemplate:YES];
-    [imageOFF setTemplate:YES];
-    
-    [statusItem setTarget:self];
-    [statusItem setMenu:statusMenu];
-    [statusMenu setDelegate:self];
-    [statusMenu setMinimumWidth:point];
-    [statusItem setImage:imageON];
-    
-    [scanResultTable setDataSource:self];
-    [scanResultTable setDelegate:self];
-    
-    
-    
+    client = [[AERWLClient alloc] init];
 
+    menuBarIcons = [[NSDictionary alloc] menuBarIcons];
     
-    ssidColumn          = [scanResultTable tableColumnWithIdentifier:@"NETWORK_NAME"];
-    bssidColumn         = [scanResultTable tableColumnWithIdentifier:@"BSSID"];
-    noiseColumn         = [scanResultTable tableColumnWithIdentifier:@"NOISE"];
-    channelColumn       = [scanResultTable tableColumnWithIdentifier:@"CHANNEL"];
-    rssiColumn          = [scanResultTable tableColumnWithIdentifier:@"RSSI"];
-    securityModeColumn  = [scanResultTable tableColumnWithIdentifier:@"SECURITY"];
-    ibssColumn          = [scanResultTable tableColumnWithIdentifier:@"MODE"];
-    
-    
-    
-    
-    statusMenuItem = [statusMenu insertItemWithTitle:@"title" action:nil keyEquivalent:@"" atIndex:0];
-    
-//    if([connection isPowerOn] == YES){
-//        
-//        [statusMenuItem setTitle:STATUS_ON];
-//        [statusItem setImage:STATUS_MENU_ICON];
-//        [statusMenuItem setHidden:NO];
-//        [powerCycleMenuItem setTitle:POWER_ON];
-//        
-//        if ([[connection ssidName] length] > 0) {
-//            
-//            if ([[connection opMode]isEqualToString:@"Infrastructure station"]) {
-//                
-//                [statusItem setImage:STATUS_MENU_ICON_CONNECTED];
-//                [statusMenuItem setTitle:STATUS_CONNECT];
-//                [disconnectMenuItem setTitle:[NSString stringWithFormat:@"Disconnect from %@", [connection ssidName]]];
-//                [disconnectMenuItem setHidden:NO];
-//                
-//            } else if ([[connection opMode] isEqualToString:@"IBSS (adhoc) station"]){
-//                
-//                [disconnectMenuItem setTitle:[NSString stringWithFormat:@"Disconnect from %@", [connection ssidName]]];
-//                [statusItem setImage:STATUS_MENU_ICON_IBSS];
-//                [statusMenuItem setTitle:STATUS_CONNECT];
-//                [disconnectMenuItem setHidden:NO];
-//            }
-//        }
-//        
-//
-//        
-//    } else {
-//        
-//        [statusMenuItem setTitle:STATUS_OFF];
-//        [statusItem setImage:STATUS_MENU_ICON_OFF];
-//        [powerCycleMenuItem setTitle:POWER_OFF];
-//        [statusMenuItem setHidden:NO];
-//        
-//    }
-    
-    //[scanDialogWindow setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
+    [self  setupMenu];
 
-   //Notifications
-
+    coreWlanIterface =[[CWInterface alloc] initWithInterfaceName:[client ifName]];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateMenu)
-                                                 name:CWSSIDDidChangeNotification object:nil];
+                                                 name:CWSSIDDidChangeNotification
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateMenu)
@@ -166,565 +90,674 @@
                                              selector:@selector(updateMenu)
                                                  name:CWBSSIDDidChangeNotification
                                                object:nil];
- 
+    
     [self updateMenu];
+    
+    if (self->_isPowered) {
+        [self performScan:self];
+    }
+    
+    
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                           selector:@selector(receiveSleepNotification:)
+                                                               name:NSWorkspaceWillSleepNotification
+                                                             object:nil];
+    
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                           selector:@selector(receiveDisplayWakeNotification:)
+                                                               name:NSWorkspaceScreensDidWakeNotification
+                                                             object:nil];
+    
+    
+    
+
     
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
-    
-    scanResult = nil;
-    scanResultForTable = nil;
-    
 }
 
-#pragma mark - Menu Delegate
+// Menu setup
 
-- (void)menuNeedsUpdate:(NSMenu *)menu
+#pragma mark - Menu
+
+-(void) updateMenu
 {
-    if ([connection isPowerOn] == YES) {
-        [[NSRunLoop currentRunLoop] performSelector:@selector(scanResultMenu:)
-                                             target:self
-                                           argument:menu
-                                              order:0
-                                              modes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
+    
+    if ([client isPowerOn]) {
+        self->_isPowered = YES;
+        if ([client isActive]) {
+            [[menu itemWithTag:AERMenuStatus] setTitle:AERNETWORK_STATUS_ACTIVE];
+            self->_isAssociated = YES;
+            [[menu itemWithTag:AERMenuDisconnect] setTitle:[NSString stringWithFormat:@"Disconnect from %@", [client ssidName]]];
+            [[menu itemWithTag:AERMenuDisconnect] setHidden:NO];
+           [menuStatusBarItem setImage:[menuBarIcons objectForKey:[client isIBSS] ? AERICON_STATUS_IBSS : AERICON_STATUS_100]];
+            
+        } else {
+            [[menu itemWithTag:AERMenuDisconnect] setHidden:YES];
+            [[menu itemWithTag:AERMenuStatus] setTitle:AERNETWORK_STATUS_DEFAULT];
+            [menuStatusBarItem setImage:[menuBarIcons objectForKey:AERICON_STATUS_IDLE]];
+            self->_isAssociated = NO;
+            [self cancelActivity];
+        }
+    } else {
         
+        [self cleanMenu];
+        networks = nil;
+        [[menu itemWithTag:AERMenuStatus] setTitle:AERNETWORK_STATUS_OFF];
+        [menuStatusBarItem setImage:[menuBarIcons objectForKey:AERICON_STATUS_OFF]];
+        self->_isAssociated = NO;
+        self->_isPowered = NO;
+    }
+    
+   
+}
 
+
+
+- (void) setupMenu
+{
+    
+
+    menu = [NSMenu new];
+    
+    NSStatusBar *bar = [NSStatusBar systemStatusBar];
+    
+
+    
+    menuStatusBarItem = [bar statusItemWithLength:NSSquareStatusItemLength];
+
+    menuStatusBarItem.target = self;
+    menuStatusBarItem.menu = menu;
+    
+  
+    menu.delegate = self;
+    
+   
+    
+    
+    //[menuStatusBarItem setTitle:@"W"];
+//    NSImage *img = [NSImage imageNamed:@"AER"];
+//    [img setTemplate:YES];
+//    [menuStatusBarItem setImage:img];
+    
+    [[menu insertItemWithTitle:@"Relaunch"
+                        action:@selector(restartMenuItemClicked)
+                 keyEquivalent:@"q"
+                           tag:AERMenuRestart
+                       atIndex:0] setAlternate:YES];
+    
+    
+    [[menu itemAtIndex:0] setKeyEquivalentModifierMask:NSCommandKeyMask | NSAlternateKeyMask];
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+    
+    [[menu insertItemWithTitle:@"Quit"
+                        action:@selector(terminate:)
+                 keyEquivalent:@"q"
+                           tag:AERMenuQuit
+                       atIndex:0] setKeyEquivalentModifierMask:NSCommandKeyMask];
+    
+    [menu insertSeparatorWithTag:AERMenuFourthSeparator atIndex:0];
+    
+/***********************************************************************/
+    
+    [[menu insertItemWithTitle:@"Open Preferences..."
+                        action:@selector(openPreferencesMenuItemClicked:)
+                 keyEquivalent:@"p"
+                           tag:AERMenuPreferences
+                       atIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask];
+    
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+    
+    
+    
+    [[menu insertItemWithTitle:@"Show Scan Dialog"
+                        action:@selector(scanWindowMenuItemClicked:)
+                 keyEquivalent:@"j"
+                           tag:AERMenuShowScanDiagAlt
+                       atIndex:0] setAlternate:YES];
+    
+    [[menu itemAtIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask | NSAlternateKeyMask];
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+
+    [[menu insertItemWithTitle:@"Join Other Network..."
+                        action:@selector(joinOtherMenuItemClicked:)
+                 keyEquivalent:@"j"
+                           tag:AERMenuManualJoin
+                       atIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask];
+    
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+    
+    [[menu insertItemWithTitle:@"Create Network"
+                        action:@selector(ibssWithoutPromptMenuItemClicked:)
+                 keyEquivalent:@"c"
+                           tag:AERMenuCreateIBSSAlt
+                       atIndex:0] setAlternate:YES];
+    
+    [[menu itemAtIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask | NSAlternateKeyMask];
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+
+    [[menu insertItemWithTitle:@"Create Network..."
+                        action:@selector(ibssCreateButtonClicked:)
+                 keyEquivalent:@"c"
+                           tag:AERMenuCreateIBSS
+                       atIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask];
+    
+    [[menu itemAtIndex:0] setTarget:self];
+    
+/***********************************************************************/
+    
+    [menu insertItemHiddenWithTitle:@"Devices" action:nil keyEquivalent:@"" tag:AERMenuDevices atIndex:0];
+    
+/***********************************************************************/
+     [menu insertItemHiddenWithTitle:@"No Networks" action:nil keyEquivalent:@"" tag:AERMenuNoNetworks atIndex:0];
+    
+    [menu insertSeparatorWithTag:AERMenuFirstSeparator atIndex:0];
+
+/***********************************************************************/
+    
+    [[menu insertItemWithTitle:[client isPowerOn] ? AERPOWER_SWITCH_OFF : AERPOWER_SWITCH_ON
+                        action:@selector(switchPowerMenuClicked:)
+                 keyEquivalent:@"s"
+                           tag:AERMenuPowerSwitch
+                       atIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask];
+    
+/***********************************************************************/
+    
+    [[menu insertItemHiddenWithTitle:@"Disconnect"
+                              action:@selector(disconnectMenuItemClicked:)
+                       keyEquivalent:@"d"
+                                 tag:AERMenuDisconnect
+                             atIndex:0] setKeyEquivalentModifierMask:NSShiftKeyMask];
+
+/***********************************************************************/
+    
+    [menu insertItemDisabledWithTitle:@"< Status Item >" tag:AERMenuStatus atIndex:0];
+    //    [menu insertMenuItemWithTitle:@"Status" action:nil key:@"" index:0 andTag:AERMenuStatus];
+    statusMenuItem = [[AERStatusMenuItemView alloc] initWithFrame:NSMakeRect(0, 0, 260, 19) menuItem:[menu itemAtIndex:0]];
+    [[menu itemAtIndex:0] setView:statusMenuItem];
+    //
+    //
+    
+
+}
+
+
+
+
+#pragma mark - menu delegate
+
+-(void)menuNeedsUpdate:(NSMenu *)aMenu
+{
+    
+
+}
+
+- (void)menuWillOpen:(NSMenu *)aMenu
+{
+
+    if (self->_isPowered) {
+        
+        [self performScan:self];
+
+        self->_isMenuOpen = YES;
+        
+        [self startScanUpdateTimerWithInterval:15];
+
+        
         
     }
-
 }
 
-#pragma mark - Actions
 
-#pragma mark - IBSS Dialog actions
-
- - (void)ibssNetworkMenuItemPressed:(id)sender
+- (void)menuDidClose:(NSMenu *)m
 {
-    CFStringRef machineName = CSCopyMachineName();
-    if( machineName )
+    self->_isMenuOpen = NO;
+    if (self->_updateTimer) {
+        dispatch_source_cancel(self->_updateTimer);
+    }
+    if (self->_isPowered) {
+        //[self cleanMenu];
+    }
+    
+    // Custom item view - ghost highlight fix
+    
+    if ([[menu highlightedItem] representedObject]) {
+        
+        
+        __weak NSMenuItem *i = [menu highlightedItem];
+        int idx = (int)[menu indexOfItem:i];
+        [menu removeItem:i];
+        [menu insertItem:i atIndex:idx];
+        
+       
+        
+    }
+    
+}
+
+- (void)menu:(NSMenu *)menu willHighlightItem:(NSMenuItem *)item{
+    
+    if (self->_updateTimer) {
+        dispatch_source_cancel(self->_updateTimer);
+     
+    }
+       //[self startScanUpdateTimerWithInterval:25];
+}
+
+#pragma mark - activity timer
+
+-(void)cancelActivity
+{
+    if(self->_activityTimer){
+        dispatch_source_cancel(self->_activityTimer);
+    }
+    
+    
+    if (self->assertionID) {
+        
+        IOPMAssertionRelease(assertionID);
+        
+        
+        
+        puts("cancel activity");
+        
+    }
+}
+
+-(void)receiveDisplayWakeNotification:(NSNotification *)note{
+    
+    [self cancelActivity];
+    
+}
+
+-(void)receiveSleepNotification:(NSNotification *)note
+{
+    NSLog(@"notification: %@", note.name);
+    
+ if (self->_isAssociated) {
+        
+        //[self updateActivity];
+      [self startActivityTimerWithInterval:60 * 60];
+ }
+    
+    
+}
+
+
+-(void)updateActivityWithInterval:(int)sec
+{
+    //if (self->_isAssociated) {
+    // kIOPMAssertionTypeNoDisplaySleep prevents display sleep,
+    // kIOPMAssertionTypeNoIdleSleep prevents idle sleep
+    
+    //reasonForActivity is a descriptive string used by the system whenever it needs
+    //  to tell the user why the system is not sleeping. For example,
+    //  "Mail Compacting Mailboxes" would be a useful string.
+    
+    //  NOTE: IOPMAssertionCreateWithName limits the string to 128 characters.
+    
+    //[self cancelActivity];
+    
+    CFStringRef reasonForActivity= CFSTR("Active Wi-Fi connection");
+    
+   //static IOPMAssertionID assertionID  = 0;
+    IOReturn success;
+    
+    //if (!self->assertionID) {
+//        
+//        success = IOPMAssertionCreateWithName(kIOPMAssertPreventUserIdleSystemSleep,
+//                                                       kIOPMAssertionLevelOn, reasonForActivity, &assertionID);
+    
+    success = IOPMAssertionCreateWithDescription(kIOPMAssertNetworkClientActive, reasonForActivity, CFSTR("Wi-Fi is active"), NULL, NULL, sec, kIOPMAssertionTimeoutActionLog, &assertionID);
+        puts("assign");
+    //}
+
+
+        
+        //success = IOPMAssertionDeclareUserActivity(reasonForActivity, kIOPMUserActiveLocal, &assertionID);
+    if (success == kIOReturnSuccess)
     {
-        [ibssNetworkNameField setStringValue:(id)CFBridgingRelease(machineName)];
-        // CFRelease(machineName);
+        
+        //Add the work you need to do without
+        //  the system sleeping here.
+        
+        //UpdateSystemActivity(0);
+        
+        puts("success");
+        
+        
+        if (!self->_isAssociated && self->assertionID) {
+            
+            success = IOPMAssertionRelease(assertionID);
+            assertionID = 0;
+            puts("release");
+        }
+       
+        //The system will be able to sleep again.
     }
     
-    NSArray *set = [connection channelsList];
+
     
-    for (NSNumber *a in set) {
-        [ibssChannelPopupButton addItemWithTitle:[NSString stringWithFormat:@"%@", a ]];
         
+        //UpdateSystemActivity(0);
+    //}
+    //puts("sleep timer");
+    
+    
+    printf("bool: %i, pmid: %i \n", self->_isAssociated, assertionID);
+    
+
+   
+}
+
+-(void)startActivityTimerWithInterval:(int)sec
+{
+    if(self->_activityTimer){
+        dispatch_source_cancel(self->_activityTimer);
     }
     
+    //[self cancelActivity];
     
-    // select channel 11 as default channel
-    [ibssChannelPopupButton selectItemWithTitle:@"11"];
+    if (!self->_isAssociated) {
+        
+        
+        return;
+    }
     
-    [NSApp activateIgnoringOtherApps:YES];
-    [ibssDialogWindow makeKeyAndOrderFront:nil];
+    [self updateActivityWithInterval:sec];
+    
+    self->_activityTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    
+    dispatch_source_set_timer(self->_activityTimer, dispatch_time(0, sec * NSEC_PER_SEC), 1.1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(self->_activityTimer, ^{
+        dispatch_source_cancel(self->_activityTimer);
+        
+        [self updateActivityWithInterval:sec];
+        
+        return [self startActivityTimerWithInterval:sec];
+    });
+    
+     dispatch_resume(self->_activityTimer);
 }
 
-- (void)ibssCreateButtonPressed:(id)sender
+#pragma mark - scan
+
+-(void)startScanUpdateTimerWithInterval:(int)sec
 {
-    __block int error;
+    if (!self->_isMenuOpen) {
+        return;
+    }
+    
+    //dispatch_source_t timer = self->_updateTimer;
+    if(self->_updateTimer){
+        dispatch_source_cancel(self->_updateTimer);
+    }
+    self->_updateTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    
+    //self->_updateTimer = timer;
+    
+    dispatch_source_set_timer(self->_updateTimer, dispatch_time(0, sec * NSEC_PER_SEC), 1.1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(self->_updateTimer, ^{
+
+        dispatch_source_cancel(self->_updateTimer);
+
+        [self performScan:self];
+        
+        return [self startScanUpdateTimerWithInterval:sec];
+        
+    });
+    
+    
+    
+    dispatch_resume(self->_updateTimer);
+    
+}
+
+
+
+-(void)cleanMenu
+{
     
 
-    [ibssProgressIndicator setHidden:NO];
-    [ibssProgressIndicator startAnimation:self];
     
-    NSNumber *channel = [NSNumber numberWithInt:[[[ibssChannelPopupButton selectedItem] title] intValue]];
-    
-    dispatch_async(self->execute_queue, ^{
-        
-        error = [connection createIBSSNetworkWithName:[ibssNetworkNameField stringValue] andChannel:[channel intValue]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+    for (NSMenuItem *i in [menu itemArray])
+    {
+        @autoreleasepool {
             
-            if (error != kA11NoErr) {
                 
-                alert = [connection aerodromeError:@"Failed to create network"
-                                                       code:error];
-                [alert runModal];
-                [ibssProgressIndicator setHidden:YES];
-                [ibssProgressIndicator stopAnimation:self];
+            
+            if ([i tag] < 1000)
+            {
+               
+                [menu removeItem:i];
                 
-            } else {
-                
-                [ibssDialogWindow performClose:nil];
-                
-                [statusItem setImage:imageIBSS];
-                [statusMenuItem setTitle:STATUS_CONNECT];
-                [disconnectMenuItem setTitle:[NSString stringWithFormat:@"Disconnect from %@", [connection ssidName]]];
-                [disconnectMenuItem setHidden:NO];
-                [ibssProgressIndicator setHidden:YES];
-                [ibssProgressIndicator stopAnimation:self];
+                //puts("item removed");
             }
+        
             
-        });
-    });
-}
-
-#pragma mark - Join Dialog actions
-
-- (void)joinMenuItemPressed:(id)sender
-{
-    [joinNetworkNameField setStringValue:@""];
-    [joinPasswordTextField setStringValue:@""];
-
-    [NSApp activateIgnoringOtherApps:YES];
-    [joinDialogWindow makeKeyAndOrderFront:self];
-}
-
-- (void)joinJoinButtonPressed:(id)sender
-{
-    __block Apple80211Err error;
-    [joinProgressIndicator setHidden:NO];
-    [joinProgressIndicator startAnimation:self];
-    
-    dispatch_async(self->execute_queue, ^{
-        
-        
-        error = [connection joinNetworkWithName:[joinNetworkNameField stringValue] andPassword:[joinPasswordTextField stringValue]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
             
-            if (error != kA11NoErr) {
-                
-                if (error == 404) {
-                    alert = [connection aerodromeError:@"Network Not Found"
-                                                           code:error];
-                    [alert runModal];
-                    [joinProgressIndicator setHidden:YES];
-                    [joinProgressIndicator stopAnimation:self];
-                    
-                } else {
-                    
-                    alert = [connection aerodromeError:@"Failed to join network"
-                                                           code:error];
-                    [alert runModal];
-                    [joinProgressIndicator setHidden:YES];
-                    [joinProgressIndicator stopAnimation:self];
-                    
-                }
-                
-            } else {
-                
-                [joinDialogWindow performClose:nil];
-                [disconnectMenuItem setTitle:[NSString stringWithFormat:@"Disconnect from %@", [connection ssidName]]];
-                [disconnectMenuItem setHidden:NO];
-                [statusMenuItem setTitle:STATUS_CONNECT];
-                [statusItem setImage:imageConnected];
-                [joinProgressIndicator setHidden:YES];
-                [joinProgressIndicator stopAnimation:self];
-                
-            }
-            
-        });
+        }
         
-    });
-
-
+    }
+    networks = nil;
+    //    NSArray *a = [menu itemArray];
+    //    sleep(0);
     
     
 }
 
-- (void)joinScanButtonPressed:(id)sender
+-(void)networkItemClicked:(id)sender
 {
-    //scanResultForTable = [connection scanForNetworks];
-    [NSApp activateIgnoringOtherApps:YES];
-    [scanDialogWindow makeKeyAndOrderFront:self];
-    [joinDialogWindow close];
     
-    [scanProgressIndicator setHidden:NO];
-    [scanProgressIndicator startAnimation:self];
-    dispatch_async(self->execute_queue, ^{
+//    NSInteger tag = [sender tag];
+//    NSInteger n = tag - 100;
+    
+//    interface.currentDialog = [AERJoinDialog createWithXPCService:interface->connection];
+//    
+//     [(AERJoinDialog *)interface.currentDialog setNetwork:[sender title]];
+//    
+//    [NSApp activateIgnoringOtherApps:YES];
+//    [interface.currentDialog showWindow:self];
+//    
+//    [[interface.currentDialog window] makeKeyAndOrderFront:self];
+    
+    //[interface joinNetwork:[sender title] withPassword:nil];
+    
+
+    
+    [interface showJoinDialogWithNetworkName:[[sender representedObject] objectForKey:@"SSID"]];
+   
+    
+   // [[NSString stringWithFormat:@"Sender: %@, network: %@", [sender title], [networks objectAtIndex:n]] writeToFile:@"/dev/stdout" atomically:NO encoding:NSUTF8StringEncoding error:nil];
+}
+
+
+
+-(void)performScan:(id)sender
+{
+    
+        [[menu itemWithTag:AERMenuStatus] setTitle:AERNETWORK_STATUS_SCAN];
         
-        scanResultForTable = [connection scanForNetworks];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-        
-            [scanProgressIndicator setHidden:YES];
-            [scanProgressIndicator stopAnimation:self];
-            [scanResultTable reloadData];
-        
-        });
-        
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [statusMenuItem startIndicator];
+        //[menuStatusBarItem startAnimation];
+        //[menuStatusBarItem startAnimationWithIcons:menuBarIcons];
     });
+    
+
+    
+//    if (networks) {
+//        
+//        [self cleanMenu];
+//        
+//    }
+    
+    // dispatch_async(self->execute_queue, ^{
+        networks = [client scan];
+
+        
+        //});
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (self->_isMenuOpen) {
+             //[interface populateMenu:menu withNetworks:networks andAction:@selector(networkItemClicked:)];
+            //[interface smartUpdate:menu withNetowrks:networks andAction:@selector(networkItemClicked:)];
+            
+            [menu updateMenuWithNetworks:networks andAction:@selector(networkItemClicked:)];
+        }
+    
+
+
+     
+        [[menu itemWithTag:AERMenuStatus] setTitle: self->_isAssociated ? AERNETWORK_STATUS_ACTIVE : AERNETWORK_STATUS_DEFAULT];
+    [statusMenuItem stopIndicator];
+    
+});
+    
 }
 
 
 #pragma mark - Menu Actions
 
-- (void)scanResultMenuItemPressed:(id)sender
+#pragma mark - Switch Power
+
+-(void)switchPowerMenuClicked:(id)sender
 {
-    //NSLog(@"Menu pressed %@", sender);
-    
-    NSInteger tag = [sender tag];
-    NSInteger n = tag - 255;
-    
-    
-    NSDictionary *network = [scanResult objectAtIndex:n];
-    
-    [joinNetworkNameField setStringValue:@""];
-    [joinPasswordTextField setStringValue:@""];
-
-    [joinNetworkNameField setStringValue:[network objectForKey:@"SSID"]];
-    [NSApp activateIgnoringOtherApps:YES];
-    [joinDialogWindow makeKeyAndOrderFront:self];
-}
-
-- (void)scanResultMenu:(NSMenu *)menu
-{
-    
-@autoreleasepool {
-    
-    
-
-    
-   __block NSDictionary *network;
-    
-    [statusMenuItem setTitle:STATUS_SCAN];
-    
-    
-    
-    __block NSInteger i;
-    
-    
-    dispatch_async(self->execute_queue, ^{
-        
-        if ([scanResult count] == 0) {
-            
-            
-            
-            
-            scanResult = [connection scanForNetworks];
-            //NSLog(@"%@", scanResult);
-            sleep(1.5);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                i = 3;
-                
-                
-                
-                for(NSString *a in scanResult)
-                {
-                    
-                    NSInteger n     = [scanResult indexOfObject:a];
-                    network         = [scanResult objectAtIndex:n];
-                    NSInteger tag   = n + 255;
-                    ++i;
-                    
-                    
-                    //            scanResultMenuItem = [statusMenu insertItemWithTitle:[NSString stringWithFormat:@"%-5ld  %.16s ", [[network objectForKey:@"RSSI"] integerValue], [[network objectForKey:@"SSID"] UTF8String]]
-                    //                                                action:@selector(scanResultMenuItemPressed:)
-                    //                                         keyEquivalent:@""
-                    //                                               atIndex:i];
-                    scanResultMenuItem = [statusMenu insertItemWithTitle:[network objectForKey:@"SSID"]
-                                                                  action:@selector(scanResultMenuItemPressed:)
-                                                           keyEquivalent:@""
-                                                                 atIndex:i];
-                    
-                    
-                    
-//                    [scanResultMenuItem setView:view];
-//                    [view ]
-//                    
-//                    [viewString setTitle:[network objectForKey:@"SSID"]];
-//                    [viewString setAction:@selector(scanResultMenuItemPressed:)];
-//                    [viewString setTag:tag];
-//                    [viewString setTarget:self];
-                    
-                    [scanResultMenuItem setTag:tag];
-                    [scanResultMenuItem setTarget:self];
-                    
-                    
-                    
-                    //[scanResultMenuItem setImage:imageON];
-                    
-                    
-                    
-                }
-            });
-        } else {
-            
-            
-            
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                for(id a in scanResult)
-                    
-                {
-                    
-                    //NSLog(@" remove %@", [statusMenu itemAtIndex:4]);
-                    [statusMenu removeItemAtIndex:4];
-                    
-                    
-                }
-                
-                
-            });
-            
-            scanResult = [connection scanForNetworks];
-            sleep(1.5);
-            //NSLog(@"%@", scanResult);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                i = 3;
-                
-                
-                for(NSString *a in scanResult)
-                {
-                    NSInteger n = [scanResult indexOfObject:a];
-                    network = [scanResult objectAtIndex:n];
-                    NSInteger tag = n + 255;
-                    ++i;
-                    
-                    
-                    scanResultMenuItem = [statusMenu insertItemWithTitle:[network objectForKey:@"SSID"]
-                                                                  action:@selector(scanResultMenuItemPressed:)
-                                                           keyEquivalent:@""
-                                                                 atIndex:i];
-                    [scanResultMenuItem setTag:tag];
-                    [scanResultMenuItem setTarget:self];
-                    
-                }
-                
-            });
-        }
-        //    if ([[connection opMode]isEqualToString:@"Infrastructure station"]) {
-        //        [statusItem setImage:STATUS_MENU_ICON_CONNECTED];
-        //        [statusMenuItem setTitle:STATUS_CONNECT];
-        //    } else if ([[connection opMode] isEqualToString:@"IBSS (adhoc) station"]){
-        //        [statusItem setImage:STATUS_MENU_ICON_IBSS];
-        //        [statusMenuItem setTitle:STATUS_CONNECT];
-        //    } else {
-        //        [statusMenuItem setTitle:STATUS_ON];
-        //    }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [self updateMenu];
-            
-        });
-        
-    });
-    
-}
-    
-        
-    
-        
-    
-}
-
-
--(void)switchPower:(id)sender
-{
-//    [disconnectMenuItem setHidden:YES];
-//    
-//    if ([connection powerCycle] == YES) {
-//        [powerCycleMenuItem setTitle:POWER_ON];
-//        [statusMenuItem setTitle:STATUS_ON];
-//        [statusItem setImage:imageON];
-//
-//    } else {
-//        [powerCycleMenuItem setTitle:POWER_OFF];
-//        [statusMenuItem setTitle:STATUS_OFF];
-//        [statusItem setImage:imageOFF];
-//        if ([scanResult count] > 0) {
-//            for(id a in scanResult){
-//                [statusMenu removeItemAtIndex:4];
-//            }
-//            scanResult = nil;
-//            scanResultForTable = nil;
-//        }
-//    }
-    
-    [connection powerCycle];
-    
-}
-
-- (void)disassociate:(id)sender
-{
-    Apple80211Err error;
-    error = [connection disassociateFromNetwork];
-    if (error != kA11NoErr) {
-        
-        alert = [connection aerodromeError:@"Failed to disconnect from netwrok"
-                                               code:error];
-        [alert runModal];
-    }
-    [disconnectMenuItem setHidden:YES];
-    [statusItem setImage:imageON];
-}
-
-- (void)updateMenu
-{
-    
-
-    
-    
-    
-    
-    if ([connection isPowerOn] == YES) {
-        [powerCycleMenuItem setTitle:POWER_ON];
-        [statusMenuItem setTitle:STATUS_ON];
-        
-        [statusItem setImage:imageON];
-        
-
-        if ([[connection ssidName] length] > 0) {
-            [disconnectMenuItem setTitle:[NSString stringWithFormat:@"Disconnect from %@", [connection ssidName]]];
-            [disconnectMenuItem setHidden:NO];
-            
-            
-            if ([[connection opMode]isEqualToString:@"Infrastructure station"]) {
-                [statusItem setImage:STATUS_MENU_ICON_CONNECTED];
-                [statusMenuItem setTitle:STATUS_CONNECT];
-            } else if ([[connection opMode] isEqualToString:@"IBSS (adhoc) station"]){
-                [statusItem setImage:STATUS_MENU_ICON_IBSS];
-                [statusMenuItem setTitle:STATUS_CONNECT];
-            }
-            
-        } else {
-            [disconnectMenuItem setHidden:YES];
-            
-        }
-
+    if([client powerSwitch])
+    {
+        [[menu itemWithTag:AERMenuPowerSwitch] setTitle:@"Switch Wi-Fi Off"];
         
     } else {
-        [powerCycleMenuItem setTitle:POWER_OFF];
-        [statusMenuItem setTitle:STATUS_OFF];
-        [statusItem setImage:imageOFF];
-        [disconnectMenuItem setHidden:YES];
         
-        if ([scanResult count] > 0) {
-            for(id a in scanResult){
-                [statusMenu removeItemAtIndex:4];
-            }
-            scanResult = nil;
-            scanResultForTable = nil;
-        }
+        [[menu itemWithTag:AERMenuPowerSwitch] setTitle:@"Switch Wi-Fi On"];
     }
     
     
-    
-    
-
-
+   
 }
 
-#pragma mark - Scan Dialog Actions
+#pragma mark - Create IBSS
 
-- (void)scanDialogWindowScanButton:(id)sender
+-(void)ibssWithoutPromptMenuItemClicked:(id)sender
 {
-    [scanProgressIndicator setHidden:NO];
-    [scanProgressIndicator startAnimation:self];
-    
-    dispatch_async(self->execute_queue, ^{
-    
-        scanResultForTable = [connection scanForNetworks];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-        
-            [scanResultTable reloadData];
-            [scanProgressIndicator setHidden:YES];
-            [scanProgressIndicator stopAnimation:self];
-        
-        });
-        
-    });
-    
-    
-    
-}
+    // CFStringRef machineName = CSCopyMachineName(); //Deprecated
+    //[interface createIBSS:CFBridgingRelease(machineName) withChannel:11];
 
-- (void)scanDialogWindowJoinButton:(id)sender
-{
-    NSInteger index = [scanResultTable selectedRow];
-    NSDictionary *network;
     
-    if (index >= 0) {
-        [joinNetworkNameField setStringValue:@""];
-        [joinPasswordTextField setStringValue:@""];
-        network = [scanResultForTable objectAtIndex:index];
-        [joinNetworkNameField setStringValue:[network valueForKey:@"SSID"]];
-        [NSApp activateIgnoringOtherApps:YES];
-        [joinDialogWindow makeKeyAndOrderFront:self];
-        
+    NSString *machineName;
+    
+    char name[32];
+    bzero(&name, 32);
+    gethostname((char *)&name, 32);
+    
+    machineName = [[NSString stringWithCString:name encoding:NSUTF8StringEncoding] stringByDeletingPathExtension];
+    if (machineName) {
+
+        [client createIBSS:machineName withChannel:11];
+    } else {
+       [client createIBSS:@"My Network" withChannel:11];
     }
+  
+    
+    //NSNumber *channel = [NSNumber numberWithInt:11];
+    
+    
+    
 
+
+    
 }
 
-#pragma mark -
-#pragma mark NSTableDataSource Protocol
-
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+-(void)ibssCreateButtonClicked:(id)sender
 {
-    NSDictionary *network;
-    NSString *mode;
+
+    [interface showCreateDialog];
+
+//    interface.currentDialog = [AERCreateNetworkDialog createWithXPCService:interface->connection andChannels:[interface channels]];
+//    //interface.currentDialog = [AERCreateNetworkDialog createWithXPCService:interface->connection]; //[AERCreateNetworkDialog createWithInterface:interface];
+//    
+//    [NSApp activateIgnoringOtherApps:YES];
+//    [interface.currentDialog showWindow:self];
+//    
+//    [[interface.currentDialog window] makeKeyAndOrderFront:self];
+   
     
-    if (tableView == scanResultTable) {
-        
-        
-        
-        if (row < [scanResultForTable count]) {
-            
-            network = [scanResultForTable objectAtIndex:row];
-            
-            if (tableColumn == ssidColumn) {
-                return [network valueForKey:@"SSID"];
-            }
-            if (tableColumn == bssidColumn) {
-                return [network valueForKey:@"BSSID"];
-            }
-            if (tableColumn == channelColumn) {
-                return [[network valueForKey:@"CHANNEL"] stringValue];
-            }
-            if (tableColumn == rssiColumn) {
-                return [[network valueForKey:@"RSSI"] stringValue];
-            }
-            if (tableColumn == noiseColumn) {
-                return [[network valueForKey:@"NOISE"] stringValue];
-                
-            }
-            if (tableColumn == securityModeColumn) {
-                return [network valueForKey:@"SECURITY"];
-            }
-            if (tableColumn == ibssColumn) {
-                
-                mode = [[network valueForKey:@"AP_MODE"] stringValue];
-                
-                if ([mode isEqualToString:@"1"]) {
-                    return @"IBSS";
-                } else if([mode isEqualToString:@"2"]){
-                    return @"AP";
-                } else {
-                    return [[network valueForKey:@"AP_MODE"] stringValue];
-                }
-                
-                
-                
-            }
-            
-            
-            
-            
-        }
-    }
+
     
     
-    return nil;
 }
 
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+
+#pragma mark - Join Network
+
+-(void)joinOtherMenuItemClicked:(id)sender
 {
-    return (scanResultForTable ? [scanResultForTable count] : 0);
+    [interface showJoinDialogWithNetworkName:@""];
+    
+//    interface.currentDialog = [AERJoinDialog createWithXPCService:interface->connection];
+//    
+//    [(AERJoinDialog *)interface.currentDialog setNetwork:@""];
+//    
+//    [NSApp activateIgnoringOtherApps:YES];
+//    [interface.currentDialog showWindow:self];
+//    
+//    [[interface.currentDialog window] makeKeyAndOrderFront:self];
+
 }
 
+-(void)scanWindowMenuItemClicked:(id)sender
+{
+    [interface showScanDialog];
+//    
+//    interface.currentDialog = [AERScanWindow createWithXPCService:interface->connection];
+//    
+//
+//    
+//    [NSApp activateIgnoringOtherApps:YES];
+//    [interface.currentDialog showWindow:self];
+//    
+//    [[interface.currentDialog window] makeKeyAndOrderFront:self];
+}
+
+#pragma mark - Open Preferences
+-(void)openPreferencesMenuItemClicked:(id)sender
+{
+    [interface showPreferencesDialog];
+}
+
+#pragma mark - Disconnect
+-(void)disconnectMenuItemClicked:(id)sender
+{
+    [client disconnect];
+    
+}
+
+#pragma mark - Restart application
+
+-(void)restartMenuItemClicked
+{
+    
+    
+    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[[NSBundle mainBundle] bundleURL]
+                                                  options:NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchNewInstance
+                                            configuration:@{}
+                                                    error:nil];
+    [NSApp terminate:self];
+    
+}
 
 @end

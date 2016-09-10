@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "a80211_getset:AERWL-ioctl.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AppDelegate setupMenu]:AppDelegate.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AppDelegate applicationDidFinishLaunching:]:AppDelegate.m">
+      </ContextState>
+      <ContextState
+         contextName = "power_cycle:AERWLioctl.c">
+      </ContextState>
+      <ContextState
+         contextName = "a80211_getset:AERWLioctl.c">
+      </ContextState>
+      <ContextState
+         contextName = "-[AERWLInterface init]:AERWLInterface.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
