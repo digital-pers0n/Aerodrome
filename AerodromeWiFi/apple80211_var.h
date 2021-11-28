@@ -27,6 +27,8 @@
 #include <net/ethernet.h>
 #include <sys/param.h>
 
+__BEGIN_DECLS
+
 // Sizes and limits
 #define APPLE80211_ADDR_LEN			6
 #define APPLE80211_MAX_RATES		15
@@ -566,5 +568,7 @@ struct apple80211_status_msg_hdr
 #define APPLE80211_M_RSN_AUTH_TIMEOUT_TEMPLATE	"com.apple.rsn.%s.auth.timeout"	// string is interface name
 
 #define APPLE80211_M_RSN_MSG_MAX				2
+
+__END_DECLS
 
 #endif // _APPLE80211_VAR_H_

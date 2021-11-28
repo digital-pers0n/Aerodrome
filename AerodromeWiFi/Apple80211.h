@@ -9,33 +9,37 @@
 #import "apple80211_var.h"
 #import "apple80211_wps.h"
 #import "Apple80211Err.h"
+#import <CoreWLAN/CoreWLAN.h>
+
+__BEGIN_DECLS
 
 struct Apple80211;
 typedef struct Apple80211 *Apple80211Ref;
 
-int Apple80211Open(Apple80211Ref *handle); //Open Conection
-int Apple80211Close(Apple80211Ref handle);
-int Apple80211BindToInterface(Apple80211Ref handle, CFStringRef interface);
-int Apple80211Scan(Apple80211Ref handle, CFArrayRef *scanResult, CFDictionaryRef parametrs);
+CWErr Apple80211Open(Apple80211Ref *handle); //Open Conection
+CWErr Apple80211Close(Apple80211Ref handle);
+CWErr Apple80211BindToInterface(Apple80211Ref handle, CFStringRef interface);
+CWErr Apple80211Scan(Apple80211Ref handle, CFArrayRef *scanResult, CFDictionaryRef parametrs);
 
-int Apple80211SetPower(Apple80211Ref handle, uint32_t power);
-int Apple80211GetPower(Apple80211Ref wref, uint32_t *power);
+CWErr Apple80211SetPower(Apple80211Ref handle, uint32_t power);
+CWErr Apple80211GetPower(Apple80211Ref wref, uint32_t *power);
 //int Apple80211Set(Apple80211Ref handle, CFStringRef str, uint32_t val);
-int ACInterfaceCopyInfo(Apple80211Ref handle);
-int ACNetworkCreate(CFStringRef ssid);
+CWErr ACInterfaceCopyInfo(Apple80211Ref handle);
+CWErr ACNetworkCreate(CFStringRef ssid);
 
-int Apple80211Disassociate(Apple80211Ref wref);
-int Apple80211Associate(Apple80211Ref handle, CFDictionaryRef SSID, CFStringRef pass);
+CWErr Apple80211Disassociate(Apple80211Ref wref);
+CWErr Apple80211Associate(Apple80211Ref handle, CFDictionaryRef SSID, CFStringRef pass);
 //int Apple80211Associate2();
 
-int Apple80211Get(Apple80211Ref ref, CFStringRef chr, uint32_t val, CFTypeRef var, uint32_t var2);
-int Apple80211Set();
+CWErr Apple80211Get(Apple80211Ref ref, CFStringRef chr, uint32_t val, CFTypeRef var, uint32_t var2);
+CWErr Apple80211Set();
 
-char *Apple80211ErrToStr(uint32_t errCode);
-int Apple80211GetIfListCopy(Apple80211Ref handle, CFArrayRef *If_name_array);
-int Apple80211GetInfoCopy(Apple80211Ref wref, CFDictionaryRef *dict);
-int Apple80211CopyValue();
+char *Apple80211ErrToStr(CWErr errCode);
+CWErr Apple80211GetIfListCopy(Apple80211Ref handle, CFArrayRef *If_name_array);
+CWErr Apple80211GetInfoCopy(Apple80211Ref wref, CFDictionaryRef *dict);
+CWErr Apple80211CopyValue();
 
+__END_DECLS
 
 @interface AirPort : NSObject
 {

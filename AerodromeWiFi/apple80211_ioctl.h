@@ -30,6 +30,8 @@
 
 #include "apple80211_var.h"
 
+__BEGIN_DECLS
+
 struct apple80211req
 {
 	char		req_if_name[IFNAMSIZ];	// 16 bytes
@@ -540,5 +542,7 @@ struct apple80211_40mhz_intolerant_data
 	u_int32_t	version;
 	u_int32_t	enabled;	// bit enabled or not
 };
+
+__END_DECLS
 
 #endif // _APPLE80211_IOCTL_H_
