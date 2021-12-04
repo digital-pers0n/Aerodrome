@@ -93,7 +93,7 @@ struct WiFiClient {
     
 //MARK: - IOCTL
     
-    template<typename T = uint32_t, typename U = void*>
+    template<typename T = int32_t, typename U = void*>
     struct Req {
         uint32_t Type;
         T Value;
@@ -102,9 +102,9 @@ struct WiFiClient {
     }; // struct Req
     
     template<typename T> using ReqValue = Req<T, void*>;
-    template<typename T> using ReqData = Req<uint32_t, T>;
+    template<typename T> using ReqData = Req<int32_t, T>;
     
-    template<typename T = uint32_t, typename U = void*>
+    template<typename T = int32_t, typename U = void*>
     int getSet(uint32_t ioc, Req<T, U> &req) const noexcept {
         auto cmd = apple80211req{};
         auto connection = socket(AF_INET, SOCK_DGRAM, 0);
