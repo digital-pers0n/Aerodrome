@@ -333,6 +333,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "digital-person.Aerodrome";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
@@ -360,6 +361,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "digital-person.Aerodrome";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
