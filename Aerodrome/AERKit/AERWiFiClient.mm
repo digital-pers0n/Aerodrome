@@ -108,7 +108,10 @@ struct WiFiClient {
     int getSet(uint32_t ioc, Req<T, U> &req) const noexcept {
         auto cmd = apple80211req{};
         auto connection = socket(AF_INET, SOCK_DGRAM, 0);
-        if (connection == -1) return kCWNotSupportedErr;
+        if (connection == -1) {
+            perror("AE::WiFiClient::getSet() socket()");
+            return kCWNotSupportedErr;
+        }
         strlcpy(cmd.req_if_name, IfName.UTF8String, IFNAMSIZ);
         cmd.req_type = req.Type;
         cmd.req_val = req.Value;
@@ -117,7 +120,7 @@ struct WiFiClient {
         errno = 0;
         auto ret = ioctl(connection, ioc, &cmd, sizeof(cmd));
         if (ret < 0) {
-            perror("AE::WiFiClient::getSet()");
+            perror("AE::WiFiClient::getSet() ioctl()");
         }
         req.Value = static_cast<T>(cmd.req_val);
         ::close(connection);
