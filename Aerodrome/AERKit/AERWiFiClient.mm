@@ -93,37 +93,45 @@ struct WiFiClient {
     
 //MARK: - IOCTL
     
-    int getSet(uint32_t ioc, uint32_t type,
-               uint32_t *valuep, void *data, size_t lenght) const noexcept {
+    template<typename T = uint32_t, typename U = void*>
+    struct Req {
+        uint32_t Type;
+        T Value;
+        U Data;
+        size_t Len;
+    }; // struct Req
+    
+    template<typename T> using ReqValue = Req<T, void*>;
+    template<typename T> using ReqData = Req<uint32_t, T>;
+    
+    template<typename T = uint32_t, typename U = void*>
+    int getSet(uint32_t ioc, Req<T, U> &req) const noexcept {
         auto cmd = apple80211req{};
         auto connection = socket(AF_INET, SOCK_DGRAM, 0);
         if (connection == -1) return kCWNotSupportedErr;
-        
         strlcpy(cmd.req_if_name, IfName.UTF8String, IFNAMSIZ);
-        cmd.req_type = type;
-        cmd.req_val = valuep ? *valuep : 0;
-        cmd.req_len = static_cast<typeof(cmd.req_len)>(lenght);
-        cmd.req_data = data;
+        cmd.req_type = req.Type;
+        cmd.req_val = req.Value;
+        cmd.req_data = req.Data;
+        cmd.req_len = static_cast<typeof(cmd.req_len)>(req.Len);
         errno = 0;
         auto ret = ioctl(connection, ioc, &cmd, sizeof(cmd));
         if (ret < 0) {
             perror("AE::WiFiClient::getSet()");
         }
-        if (valuep) {
-            *valuep = cmd.req_val;
-        }
+        req.Value = static_cast<T>(cmd.req_val);
         ::close(connection);
         return ret;
     }
     
-    int get(uint32_t type, uint32_t *valuep,
-            void *data, size_t lenght) const noexcept {
-        return getSet(SIOCGA80211, type, valuep, data, lenght);
+    template<typename T, typename U = void*>
+    int get(Req<T, U> &data) const noexcept {
+        return getSet<T, U>(SIOCGA80211, data);
     }
     
-    int set(uint32_t type, uint32_t *valuep,
-            void *data, size_t lenght) const noexcept {
-        return getSet(SIOCSA80211, type, valuep, data, lenght);
+    template<typename T, typename U = void*>
+    int set(Req<T, U> &data) const noexcept {
+        return getSet<T, U>(SIOCSA80211, data);
     }
     
     int powerState(apple80211_power_data *data) const noexcept {
