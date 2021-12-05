@@ -137,15 +137,23 @@ struct WiFiClient {
         return getSet<T, U>(SIOCSA80211, data);
     }
     
-    int powerState(apple80211_power_data *data) const noexcept {
-        return get(APPLE80211_IOC_POWER, nil, data, sizeof(*data));
+    int powerState(apple80211_power_data *power) const noexcept {
+        ReqData<apple80211_power_data*> data = {
+            .Type = APPLE80211_IOC_POWER, .Value = 0,
+            .Data = power, .Len = sizeof(apple80211_power_data)
+        };
+        return get(data);
     }
     
-    int setPowerState(apple80211_power_data *data) const noexcept {
-        return set(APPLE80211_IOC_POWER, nil, data, sizeof(*data));
+    int setPowerState(apple80211_power_data *power) const noexcept {
+        ReqData<apple80211_power_data*> data = {
+            .Type = APPLE80211_IOC_POWER, .Value = 0,
+            .Data = power, .Len = sizeof(apple80211_power_data)
+        };
+        return set(data);
     }
     
-    int setPowerState(bool value) const noexcept {
+    int setPowerOn(bool value) const noexcept {
         auto data = apple80211_power_data{};
         powerState(&data);
         data.version = 1;
@@ -158,7 +166,7 @@ struct WiFiClient {
         return 0;
     }
     
-    bool isOn() const noexcept {
+    bool isPowerOn() const noexcept {
         auto data = apple80211_power_data{};
         powerState(&data);
         return (data.power_state[0] != 0);
