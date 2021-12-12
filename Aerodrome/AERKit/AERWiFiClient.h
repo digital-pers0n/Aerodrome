@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreWLAN/CoreWLAN.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface AERWiFiClient : NSObject
-
+- (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
 @end
 
 NS_ASSUME_NONNULL_END

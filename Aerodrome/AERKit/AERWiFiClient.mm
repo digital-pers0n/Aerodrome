@@ -210,6 +210,32 @@ struct WiFiClient {
 
 @end
 
-@implementation AERWiFiClient
+@implementation AERWiFiClient {
+    AE::WiFiClient _client;
+}
+
+- (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler {
+    if (!(self = [super init])) return self;
+    auto err = _client.open();
+    if (err != kCWNoErr) {
+        auto errDomain = err < 0 ? CWErrorDoamin : NSPOSIXErrorDomain;
+        auto e = [[NSError alloc] initWithDomain:errDomain
+                                            code:err userInfo:nil];
+        handler(e);
+        return nil;
+    }
+    return self;
+}
+
+- (nullable instancetype)init {
+    auto const funcName = __PRETTY_FUNCTION__;
+    return [self initWithErrorHandler:^(NSError *error) {
+        NSLog(@"%s : %@", funcName, error);
+    }];
+}
+
+- (void)dealloc {
+    _client.close();
+}
 
 @end
