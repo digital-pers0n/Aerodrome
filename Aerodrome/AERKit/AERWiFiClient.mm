@@ -177,18 +177,34 @@ struct WiFiClient {
 [[clang::objc_direct_members]]
 @implementation AERNetwork
 
-- (instancetype)initWithSSID:(NSString *)networkName
-                       BSSID:(NSString *)bssidName
-                        RSSI:(NSInteger)rssiValue
-                     channel:(NSInteger)channelNumber
-                      isIBSS:(BOOL)isIbss
-{
+- (instancetype)initWithScanRecord:(NSDictionary *)network {
     if (!(self = [super init])) return self;
-    _ssid = [networkName copyWithZone:nil];
-    _bssid = [bssidName copyWithZone:nil];
-    _rssiValue = rssiValue;
-    _channelNumber = channelNumber;
-    _isIbss = isIbss;
+    _ssid = [network[@"SSID_STR"] copyWithZone:nil];
+    _bssid = [network[@"BSSID"] copyWithZone:nil];
+    _countryCode = [&] () -> NSString * {
+        auto info = (NSDictionary*)network[@"80211D_IE"];
+        if (!info) return @"Unknown";
+        return [info[@"IE_KEY_80211D_COUNTRY_CODE"] copyWithZone:nil];
+    }();
+    _rssiValue = [network[@"RSSI"] integerValue];
+    _channelNumber = [network[@"CHANNEL"] integerValue];
+    _isIbss = [network[@"AP_MODE"] integerValue] == 1;
+    
+    // lousy implementation
+    _security = [&] () -> CWSecurity {
+        if (network[@"WEP"]) return kCWSecurityWEP;
+        auto result = kCWSecurityNone;
+        if (network[@"WPA_IE"]) {
+            result = kCWSecurityWPAPersonal;
+        }
+        if (network[@"RSN_IE"] && result == kCWSecurityWPAPersonal) {
+            result = kCWSecurityWPAPersonalMixed;
+        } else {
+            result = kCWSecurityWPA2Personal;
+        }
+        return result;
+    }();
+    
     return self;
 }
 

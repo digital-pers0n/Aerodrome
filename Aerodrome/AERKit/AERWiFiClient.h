@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) NSInteger rssiValue;
 @property (readonly, nonatomic) NSInteger channelNumber;
 @property (readonly, nonatomic) BOOL isIbss;
+@property (readonly, nonatomic, nullable) NSString *countryCode;
+@property (readonly, nonatomic) CWSecurity security;
 
 @end
 
