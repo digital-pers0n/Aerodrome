@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE746E352761EAAE00575481 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE746E342761EAAE00575481 /* CoreWLAN.framework */; };
 		CEBAC786273FE1350066A082 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEBAC785273FE1350066A082 /* AppDelegate.mm */; };
 		CEBAC788273FE1390066A082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBAC787273FE1390066A082 /* Assets.xcassets */; };
 		CEBAC78B273FE1390066A082 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAC789273FE1390066A082 /* MainMenu.xib */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE746E342761EAAE00575481 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		CEBAC781273FE1350066A082 /* Aerodrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aerodrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBAC784273FE1350066A082 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEBAC785273FE1350066A082 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBADA6727524FB500187BFC /* AirPort.framework in Frameworks */,
+				CE746E352761EAAE00575481 /* CoreWLAN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +100,7 @@
 		CEBADA6127524F0400187BFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE746E342761EAAE00575481 /* CoreWLAN.framework */,
 				CEBADA6227524F0400187BFC /* AirPort.framework */,
 			);
 			name = Frameworks;
