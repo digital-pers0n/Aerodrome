@@ -240,7 +240,7 @@ struct WiFiClient {
     if (!(self = [super init])) return self;
     auto err = _client.open();
     if (err != kCWNoErr) {
-        auto errDomain = err < 0 ? CWErrorDoamin : NSPOSIXErrorDomain;
+        auto errDomain = err < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
         auto e = [[NSError alloc] initWithDomain:errDomain
                                             code:err userInfo:nil];
         handler(e);
