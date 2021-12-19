@@ -193,6 +193,39 @@ struct WiFiClient {
         powerState(&data);
         return (data.power_state[0] != 0);
     }
+    
+    apple80211_state state() const noexcept {
+        ReqValue<apple80211_state> data = { .Type = APPLE80211_IOC_STATE };
+        get(data);
+        return data.Value;
+    }
+    
+    bool isAssociated() const noexcept {
+        return state() == APPLE80211_S_RUN;
+    }
+    
+    apple80211_opmode opMode() const noexcept {
+        ReqValue<apple80211_opmode> data = { .Type = APPLE80211_IOC_OP_MODE };
+        get(data);
+        return data.Value;
+    }
+    
+    bool isIBSS() const noexcept {
+        return opMode() == APPLE80211_M_IBSS;
+    }
+    
+    int bssid(ether_addr *name) const noexcept {
+        ReqData<ether_addr*> data = {
+            .Type = APPLE80211_IOC_BSSID, .Value = 0,
+            .Data = name, .Len = sizeof(ether_addr)
+        };
+        return get(data);
+    }
+    
+    int disassociate() const noexcept {
+        Req<> data = { .Type = APPLE80211_IOC_DISASSOCIATE };
+        return set(data);
+    }
 }; // struct WiFiClient
 } // namespace AE
 
