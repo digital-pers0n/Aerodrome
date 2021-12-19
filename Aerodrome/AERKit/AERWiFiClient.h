@@ -28,6 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AERWiFiClient : NSObject
 - (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
+- (nullable NSArray<AERNetwork*>*)
+    scanForNetworksWithName:(nullable NSString*)name
+                      error:(void(^)(NSError *error))errorHandler;
+- (nullable NSArray<AERNetwork*>*)
+    scanForNetworksWithName:(nullable NSString*)name;
+- (nullable NSArray<AERNetwork*>*)scan;
 @end
 
 NS_ASSUME_NONNULL_END

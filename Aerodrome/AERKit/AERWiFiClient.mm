@@ -260,4 +260,55 @@ struct WiFiClient {
     _client.close();
 }
 
+- (nullable NSArray<AERNetwork*>*)scan {
+    return [self scanForNetworksWithName:nil];
+}
+
+- (nullable NSArray<AERNetwork*>*)
+    scanForNetworksWithName:(nullable NSString*)name {
+    auto const funcName = __PRETTY_FUNCTION__;
+    return [self scanForNetworksWithName:nil error:^(NSError *error) {
+        NSLog(@"%s : %@", funcName, error);
+    }];
+}
+
+- (nullable NSArray<AERNetwork*>*)
+    scanForNetworksWithName:(nullable NSString*)name
+                      error:(void(^)(NSError *error))errorHandler {
+    auto result = [NSMutableArray new];
+    auto err = _client.scan([&](NSArray<NSDictionary*>*items) {
+        auto forEach = [&](auto task) {
+            for (NSDictionary<NSString*, id> *item in items) {
+                @autoreleasepool { task(item); }
+            }
+        };
+        
+        auto addNetwork = [&](const auto &scanRecord) {
+            [result addObject:[[AERNetwork alloc]
+                               initWithScanRecord:scanRecord]];
+        };
+        
+        if (name) {
+            forEach([&](const auto &item){
+                if ([item[@"SSID_STR"] isEqualToString:name]) {
+                    addNetwork(item);
+                }
+            });
+        } else {
+            forEach([&](const auto &item){
+                addNetwork(item);
+            });
+        }
+    }); // scan()
+    
+    if (err != kCWNoErr) {
+        auto errDomain = err < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
+        auto e = [[NSError alloc] initWithDomain:errDomain
+                                            code:err userInfo:nil];
+        errorHandler(e);
+        return nil;
+    }
+    return result;
+}
+
 @end
