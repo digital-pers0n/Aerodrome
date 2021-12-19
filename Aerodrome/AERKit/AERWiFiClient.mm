@@ -80,6 +80,28 @@ struct WiFiClient {
         return done();
     }
     
+    CWErr createIBSSNetwork(NSString *name, int channel) const noexcept {
+        auto ssidData = [name dataUsingEncoding:NSUTF8StringEncoding
+                           allowLossyConversion:YES];
+        if (!ssidData) return kCWInvalidParameterErr;
+        auto channelFlags = APPLE80211_C_FLAG_20MHZ  | APPLE80211_C_FLAG_2GHZ
+                          | APPLE80211_C_FLAG_ACTIVE | APPLE80211_C_FLAG_IBSS;
+        auto ibssDict = @{
+            @"SSID" : name,
+            @"CHANNEL" : @(channel),
+            @"CHANNEL_FLAGS" : @(channelFlags),
+            @"AP_MODE_AUTH_LOWER" : @(APPLE80211_AUTHTYPE_OPEN),
+            @"AP_MODE_AUTH_UPPER" : @(APPLE80211_AUTHTYPE_NONE),
+            @"AP_MODE_CYPHER_TYPE" : @(APPLE80211_CIPHER_NONE),
+            @"AP_MODE_PHY_MODE" : @(APPLE80211_MODE_AUTO),
+            @"AP_MODE_SSID_BYTES" : ssidData,
+            @"AP_MODE_KEY" : @"passkey123", //doesn't work
+            @"AP_MODE_IE_LIST" : ssidData
+        };
+        return Apple80211Set(Ref, APPLE80211_IOC_IBSS_MODE, 1,
+                             (__bridge CFTypeRef)ibssDict);
+    }
+    
 //MARK: - Scan
     
     template<typename T = void(NSArray<NSDictionary*>*)>
