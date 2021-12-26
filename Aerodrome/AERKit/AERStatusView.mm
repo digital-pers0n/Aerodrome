@@ -40,7 +40,7 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     [[NSException exceptionWithName:NSInternalInconsistencyException
                              reason:@"Not implemented" userInfo:nil] raise];
-    return nil;
+    return [super initWithCoder:coder];
 }
 
 //MARK: - Properties
