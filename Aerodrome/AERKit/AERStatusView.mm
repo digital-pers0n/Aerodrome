@@ -20,7 +20,7 @@
     self.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     
     auto tfc = [[NSTextFieldCell alloc] initTextCell:@""];
-    tfc.font = [NSFont menuBarFontOfSize:14];
+    tfc.font = [NSFont menuFontOfSize:0];
     tfc.textColor = NSColor.disabledControlTextColor;
     
     auto pi = [NSProgressIndicator new];
