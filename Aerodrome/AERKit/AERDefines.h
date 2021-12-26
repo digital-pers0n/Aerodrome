@@ -25,11 +25,13 @@
 #define EXTERNALLY_RETAINED [[clang::objc_externally_retained]]
 
 #define EXTERNALLY_RETAINED_BEGIN \
-_Pragma("clang attribute push ([[clang::objc_externally_retained]], \
+_Pragma("clang attribute push (__attribute((objc_externally_retained)), \
 apply_to=any(function, objc_method, block))")
 
 #define EXTERNALLY_RETAINED_END _Pragma("clang attribute pop")
 
 #define UNSAFE __unsafe_unretained
+
+#define BRIDGE_CAST(type, object) ((__bridge type)(object))
 
 #endif /* AERDefines_h */
