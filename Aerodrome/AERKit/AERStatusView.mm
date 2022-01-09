@@ -20,8 +20,9 @@
     self.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     
     auto tfc = [[NSTextFieldCell alloc] initTextCell:@""];
-    tfc.font = [NSFont menuFontOfSize:0];
-    tfc.textColor = NSColor.disabledControlTextColor;
+    tfc.font = [NSFont menuBarFontOfSize:0];
+    tfc.textColor = NSColor.secondaryLabelColor;
+    _statusText = tfc;
     
     auto pi = [NSProgressIndicator new];
     pi.style = NSProgressIndicatorStyleSpinning;
