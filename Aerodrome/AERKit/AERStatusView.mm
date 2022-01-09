@@ -48,6 +48,7 @@
 
 - (void)setStatusText:(NSString *)text {
     _statusText.stringValue = text;
+    self.needsDisplay = YES;
 }
 
 - (NSString *)statusText {
