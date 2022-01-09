@@ -6,13 +6,17 @@
 //
 
 #import "AppDelegate.h"
+#import "AERWindowController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    AERWindowController *_appController;
+}
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    _appController = [AERWindowController new];
 }
 
 
