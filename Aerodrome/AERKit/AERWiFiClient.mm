@@ -12,6 +12,16 @@
 #import <CoreWLAN/CoreWLAN.h>
 
 namespace AE {
+enum struct WiFiEvent {
+    Power = APPLE80211_M_POWER_CHANGED,
+    SSID = APPLE80211_M_SSID_CHANGED,
+    BSSID = APPLE80211_M_BSSID_CHANGED,
+    Link = APPLE80211_M_LINK_CHANGED,
+    Mode = APPLE80211_M_MODE_CHANGED,
+    Assoc = APPLE80211_M_ASSOC_DONE,
+    Scan = APPLE80211_M_SCAN_DONE
+}; // enum struct WiFiEvent
+
 struct WiFiClient {
     Apple80211Ref Ref;
     NSString *IfName;
@@ -100,6 +110,25 @@ struct WiFiClient {
         };
         return Apple80211Set(Ref, APPLE80211_IOC_IBSS_MODE, 1,
                              (__bridge CFTypeRef)ibssDict);
+    }
+    
+//MARK: - Event Monitor
+    
+    CWErr eventMonitorInit(void *userData, CFRunLoopRef runloop,
+                           Apple80211EventCallback cb) const noexcept {
+        return Apple80211EventMonitoringInit(Ref, cb, userData, runloop);
+    }
+    
+    CWErr eventMonitorHalt() const noexcept {
+        return Apple80211EventMonitoringHalt(Ref);
+    }
+    
+    CWErr eventMonitorAdd(WiFiEvent event) const noexcept {
+        return Apple80211StartMonitoringEvent(Ref, uint32_t(event));
+    }
+    
+    CWErr eventMonitorRemove(WiFiEvent event) const noexcept {
+        return Apple80211StopMonitoringEvent(Ref, uint32_t(event));
     }
     
 //MARK: - Scan

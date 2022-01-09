@@ -39,6 +39,16 @@ CWErr Apple80211GetIfListCopy(Apple80211Ref handle, CFArrayRef *If_name_array);
 CWErr Apple80211GetInfoCopy(Apple80211Ref wref, CFDictionaryRef *dict);
 CWErr Apple80211CopyValue();
 
+using Apple80211EventCallback = void(*)(CWErr err, Apple80211Ref wref,
+                                        uint32_t event, void * eventData,
+                                        uint32_t eventDataLen, void *context);
+CWErr Apple80211EventMonitoringInit(Apple80211Ref wref,
+                                    Apple80211EventCallback cb,
+                                    void *userData, CFRunLoopRef runloop);
+CWErr Apple80211StartMonitoringEvent(Apple80211Ref wref, uint32_t event);
+CWErr Apple80211StopMonitoringEvent(Apple80211Ref wref, uint32_t event);
+CWErr Apple80211EventMonitoringHalt(Apple80211Ref wref);
+
 __END_DECLS
 
 @interface AirPort : NSObject
