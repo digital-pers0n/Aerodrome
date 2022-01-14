@@ -26,7 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+using AERWiFiClientEventHandler = void(^)(void);
+
 @interface AERWiFiClient : NSObject
+
+@property (nonatomic, readonly, direct, getter=isPowerOn) BOOL powerOn;
+
 - (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
 - (nullable NSArray<AERNetwork*>*)
     scanForNetworksWithName:(nullable NSString*)name
@@ -34,6 +39,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSArray<AERNetwork*>*)
     scanForNetworksWithName:(nullable NSString*)name;
 - (nullable NSArray<AERNetwork*>*)scan;
+
+@property (nonatomic, copy, null_resettable, direct)
+    AERWiFiClientEventHandler onPowerStateChange;
+@property (nonatomic, copy, null_resettable, direct)
+    AERWiFiClientEventHandler onSSIDChange;
+
 @end
 
 NS_ASSUME_NONNULL_END

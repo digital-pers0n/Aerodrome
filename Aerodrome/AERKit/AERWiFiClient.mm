@@ -62,6 +62,10 @@ struct WiFiClient {
         return CWErr(err);
     }
     
+    bool isOpen() const noexcept {
+        return Ref != nil;
+    }
+    
     void close() noexcept {
         Apple80211Close(Ref);
         Ref = nil;
@@ -298,16 +302,43 @@ struct WiFiClient {
     AE::WiFiClient _client;
 }
 
-- (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler {
+- (nullable instancetype)initWithErrorHandler:(void(^)(NSError*))handler {
     if (!(self = [super init])) return self;
     auto err = _client.open();
-    if (err != kCWNoErr) {
-        auto errDomain = err < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
-        auto e = [[NSError alloc] initWithDomain:errDomain
-                                            code:err userInfo:nil];
-        handler(e);
-        return nil;
-    }
+    auto fail = [&](CWErr code) {
+        _client.close();
+        return AERWiFiClientError(code, handler);
+    };
+    
+    if (err != kCWNoErr) return AERWiFiClientError(err, handler);
+    
+    err = _client.eventMonitorInit((__bridge void*)self, CFRunLoopGetMain(),
+    [](CWErr e, Apple80211Ref ref, uint32_t event,
+       void*, uint32_t, void *ctx) {
+        __unsafe_unretained auto uself = (__bridge AERWiFiClient*)ctx;
+        switch (AE::WiFiEvent(event)) {
+        case AE::WiFiEvent::Power:
+            uself->_onPowerStateChange();
+            break;
+            
+        case AE::WiFiEvent::SSID:
+            uself->_onSSIDChange();
+            break;
+            
+        default:
+            break;
+        }
+    }); // eventMonitorInit
+    if (err != kCWNoErr) return fail(err);
+    
+    err = _client.eventMonitorAdd(AE::WiFiEvent::Power);
+    if (err != kCWNoErr) return fail(err);
+    self.onPowerStateChange = nil;
+    
+    err = _client.eventMonitorAdd(AE::WiFiEvent::SSID);
+    if (err != kCWNoErr) return fail(err);
+    self.onSSIDChange = nil;
+    
     return self;
 }
 
@@ -363,14 +394,34 @@ struct WiFiClient {
         }
     }); // scan()
     
-    if (err != kCWNoErr) {
-        auto errDomain = err < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
-        auto e = [[NSError alloc] initWithDomain:errDomain
-                                            code:err userInfo:nil];
-        errorHandler(e);
-        return nil;
-    }
+    if (err != kCWNoErr) return AERWiFiClientError(err, errorHandler);
     return result;
 }
+
+//MARK: - Properties
+
+- (BOOL)isPowerOn {
+    return _client.isPowerOn();
+}
+
+- (void)setOnPowerStateChange:(AERWiFiClientEventHandler)block {
+    _onPowerStateChange = block ? [block copy] : id(^{});
+}
+
+- (void)setOnSSIDChange:(AERWiFiClientEventHandler)block {
+    _onSSIDChange = block ? [block copy] : id(^{});
+}
+
+//MARK: - Private
+
+namespace {
+template<typename T, typename Fn> _Nullable id
+AERWiFiClientError(const T &code, const Fn &handler) noexcept {
+    auto domain = code < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
+    auto e = [[NSError alloc] initWithDomain:domain code:code userInfo:nil];
+    handler(e);
+    return nil;
+}
+} // anonymous namespace
 
 @end
