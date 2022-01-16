@@ -116,6 +116,14 @@ struct WiFiClient {
                              (__bridge CFTypeRef)ibssDict);
     }
     
+//MARK: - State
+
+    WiFiState status() const noexcept {
+        if (!isPowerOn()) return WiFiState::Off;
+        if (isAssociated()) return WiFiState::Running;
+        return WiFiState::Idle;
+    }
+    
 //MARK: - Event Monitor
     
     CWErr eventMonitorInit(void *userData, CFRunLoopRef runloop,
@@ -399,6 +407,10 @@ struct WiFiClient {
 }
 
 //MARK: - Properties
+
+- (AE::WiFiState)state {
+    return _client.status();
+}
 
 - (BOOL)isPowerOn {
     return _client.isPowerOn();
