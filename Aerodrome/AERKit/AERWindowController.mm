@@ -50,11 +50,7 @@ struct WiFiMenu {
         
         auto create = [&](NSString *string, Tag tag,
                           NSString *key = @"") -> NSMenuItem * {
-            auto item =  [[NSMenuItem alloc]
-                          initWithTitle:string action:nil keyEquivalent:key];
-            item.tag = NSInteger(tag);
-            [Ref addItem:item];
-            return item;
+            return addItem<NSMenuItem>(string, tag, key);
         };
         
         auto separator = [&] {
@@ -68,14 +64,7 @@ struct WiFiMenu {
                       statusItemWithLength:NSSquareStatusItemLength];
         StatusItem.menu = Ref;
         
-        Status = [&]() -> NSMenuItem * {
-            auto item = create(@"Status", Tag::Status);
-            auto view = [[AERStatusView alloc] initWithFrame:{{}, {260, 19}}];
-            [item bind:NSTitleBinding toObject:view
-                  withKeyPath:KVP(view, statusText) options:nil];
-            item.view = view;
-            return item;
-        }();
+        Status = addItem<AERStatusMenuItem>(@"Status", Tag::Status);
         
         Disconnect = create(@"Disconnect", Tag::Disconnect);
         Power = create(@"Power State", Tag::Power);
@@ -88,6 +77,15 @@ struct WiFiMenu {
         Quit = create(@"Quit", Tag::Quit);
         Relaunch = create(@"Relaunch", Tag::Relaunch);
         Relaunch.alternate = YES;
+    }
+    
+    template<typename T>
+    T *addItem(NSString *title, Tag tag, NSString *key = @"") const noexcept {
+        auto item = [[T alloc] initWithTitle:title
+                                      action:nil keyEquivalent:key];
+        item.tag = NSInteger(tag);
+        [Ref addItem:item];
+        return item;
     }
     
     void update(NSArray<AERNetwork*>* networks,
