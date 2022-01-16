@@ -7,6 +7,7 @@
 
 #import "AERDefines.h"
 #import "AERNetworkView.h"
+#import "AERStatusMenuItem.h"
 #import "AERStatusView.h"
 #import "AERWiFiClient.h"
 #import "AERWindowController.h"
@@ -126,6 +127,9 @@ EXTERNALLY_RETAINED_END
 @interface AERWindowController () <NSMenuDelegate>
 @property (nonatomic, assign) IBOutlet NSTextField *networkNameTextField;
 @property (nonatomic, assign) IBOutlet NSSecureTextField *passwordTextField;
+
+- (IBAction)performConnection:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end
 
