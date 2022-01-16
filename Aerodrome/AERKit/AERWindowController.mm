@@ -133,7 +133,29 @@ EXTERNALLY_RETAINED_END
 
 @end
 
-@implementation AERWindowController
+
+[[clang::objc_direct_members]]
+@implementation AERWindowController {
+    AE::WiFiMenu _menu;
+    AERWiFiClient *_client;
+}
+
+- (NSNibName)windowNibName {
+    return self.className;
+}
+
+- (instancetype)init {
+    if (!(self = [super init])) return self;
+    _client = [[AERWiFiClient alloc] initWithErrorHandler:
+    ^(NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        [NSApp presentError:error];
+        [NSApp terminate:nil];
+    }];
+    
+    _menu.Ref.delegate = self;
+    return self;
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];
