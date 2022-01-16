@@ -8,18 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		CE746E352761EAAE00575481 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE746E342761EAAE00575481 /* CoreWLAN.framework */; };
+		CEB1336B27735DA000ED5C1D /* AERNetworkView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB1336A27735DA000ED5C1D /* AERNetworkView.mm */; };
 		CEBAC786273FE1350066A082 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEBAC785273FE1350066A082 /* AppDelegate.mm */; };
 		CEBAC788273FE1390066A082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBAC787273FE1390066A082 /* Assets.xcassets */; };
 		CEBAC78B273FE1390066A082 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBAC789273FE1390066A082 /* MainMenu.xib */; };
 		CEBAC78E273FE1390066A082 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAC78D273FE1390066A082 /* main.m */; };
 		CEBADA6727524FB500187BFC /* AirPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBADA6227524F0400187BFC /* AirPort.framework */; };
+		CED0C2992769EF9500DE6233 /* AERStatusView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CED0C2982769EF9500DE6233 /* AERStatusView.mm */; };
+		CEE6906C2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE6906B2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm */; };
 		CEEBCB202744E88F00C97FF0 /* AERWindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEEBCB1E2744E88F00C97FF0 /* AERWindowController.mm */; };
 		CEEBCB212744E88F00C97FF0 /* AERWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCB1F2744E88F00C97FF0 /* AERWindowController.xib */; };
+		CEF1BB84278AF42400E693F0 /* AERStatusMenuItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEF1BB83278AF42400E693F0 /* AERStatusMenuItem.mm */; };
 		CEF8D5842746370200B6A085 /* AERWiFiClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEF8D5832746370200B6A085 /* AERWiFiClient.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE4F7EAA276CC7FB00FA8E6C /* AERDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERDefines.h; sourceTree = "<group>"; };
 		CE746E342761EAAE00575481 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		CEB1336927735DA000ED5C1D /* AERNetworkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERNetworkView.h; sourceTree = "<group>"; };
+		CEB1336A27735DA000ED5C1D /* AERNetworkView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERNetworkView.mm; sourceTree = "<group>"; };
 		CEBAC781273FE1350066A082 /* Aerodrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aerodrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBAC784273FE1350066A082 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEBAC785273FE1350066A082 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -28,6 +35,10 @@
 		CEBAC78C273FE1390066A082 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBAC78D273FE1390066A082 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEBADA6227524F0400187BFC /* AirPort.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AirPort.framework; path = ../../../../../../System/Library/PrivateFrameworks/AirPort.framework; sourceTree = "<group>"; };
+		CED0C2972769EF9500DE6233 /* AERStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERStatusView.h; sourceTree = "<group>"; };
+		CED0C2982769EF9500DE6233 /* AERStatusView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERStatusView.mm; sourceTree = "<group>"; };
+		CEE6906A2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+AERMenuItemAdditions.h"; sourceTree = "<group>"; };
+		CEE6906B2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = "NSMenuItem+AERMenuItemAdditions.mm"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CEEBCB1D2744E88F00C97FF0 /* AERWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERWindowController.h; sourceTree = "<group>"; };
 		CEEBCB1E2744E88F00C97FF0 /* AERWindowController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERWindowController.mm; sourceTree = "<group>"; };
 		CEEBCB1F2744E88F00C97FF0 /* AERWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERWindowController.xib; sourceTree = "<group>"; };
@@ -36,8 +47,11 @@
 		CEEBCB2B27450E7000C97FF0 /* Apple80211Err.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Apple80211Err.h; path = AerodromeWiFi/Apple80211Err.h; sourceTree = SOURCE_ROOT; };
 		CEEBCB2C27450E7000C97FF0 /* Apple80211.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Apple80211.h; path = AerodromeWiFi/Apple80211.h; sourceTree = SOURCE_ROOT; };
 		CEEBCB2D27450E7100C97FF0 /* apple80211_ioctl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple80211_ioctl.h; path = AerodromeWiFi/apple80211_ioctl.h; sourceTree = SOURCE_ROOT; };
+		CEF1BB82278AF42400E693F0 /* AERStatusMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERStatusMenuItem.h; sourceTree = "<group>"; };
+		CEF1BB83278AF42400E693F0 /* AERStatusMenuItem.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERStatusMenuItem.mm; sourceTree = "<group>"; };
 		CEF8D5822746370200B6A085 /* AERWiFiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERWiFiClient.h; sourceTree = "<group>"; };
 		CEF8D5832746370200B6A085 /* AERWiFiClient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERWiFiClient.mm; sourceTree = "<group>"; };
+		CEFE5C42276F8801005949B3 /* AERAssociatedObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AERAssociatedObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +123,21 @@
 		CEEBCB242744E8B000C97FF0 /* AERKit */ = {
 			isa = PBXGroup;
 			children = (
+				CEFE5C42276F8801005949B3 /* AERAssociatedObject.h */,
+				CE4F7EAA276CC7FB00FA8E6C /* AERDefines.h */,
+				CEB1336927735DA000ED5C1D /* AERNetworkView.h */,
+				CEB1336A27735DA000ED5C1D /* AERNetworkView.mm */,
+				CEF1BB82278AF42400E693F0 /* AERStatusMenuItem.h */,
+				CEF1BB83278AF42400E693F0 /* AERStatusMenuItem.mm */,
+				CED0C2972769EF9500DE6233 /* AERStatusView.h */,
+				CED0C2982769EF9500DE6233 /* AERStatusView.mm */,
+				CEF8D5822746370200B6A085 /* AERWiFiClient.h */,
+				CEF8D5832746370200B6A085 /* AERWiFiClient.mm */,
 				CEEBCB1D2744E88F00C97FF0 /* AERWindowController.h */,
 				CEEBCB1E2744E88F00C97FF0 /* AERWindowController.mm */,
 				CEEBCB1F2744E88F00C97FF0 /* AERWindowController.xib */,
-				CEF8D5822746370200B6A085 /* AERWiFiClient.h */,
-				CEF8D5832746370200B6A085 /* AERWiFiClient.mm */,
+				CEE6906A2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.h */,
+				CEE6906B2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm */,
 			);
 			path = AERKit;
 			sourceTree = "<group>";
@@ -144,7 +168,9 @@
 		CEBAC779273FE1350066A082 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AER;
 				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = "digital-person";
 				TargetAttributes = {
 					CEBAC780273FE1350066A082 = {
 						CreatedOnToolsVersion = 12.4;
@@ -187,9 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB1336B27735DA000ED5C1D /* AERNetworkView.mm in Sources */,
+				CED0C2992769EF9500DE6233 /* AERStatusView.mm in Sources */,
 				CEBAC78E273FE1390066A082 /* main.m in Sources */,
+				CEE6906C2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm in Sources */,
 				CEF8D5842746370200B6A085 /* AERWiFiClient.mm in Sources */,
 				CEBAC786273FE1350066A082 /* AppDelegate.mm in Sources */,
+				CEF1BB84278AF42400E693F0 /* AERStatusMenuItem.mm in Sources */,
 				CEEBCB202744E88F00C97FF0 /* AERWindowController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +400,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LLVM_LTO = YES_THIN;
 				MARKETING_VERSION = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "digital-person.Aerodrome";
