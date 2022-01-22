@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 using AERWiFiClientEventHandler = void(^)(void);
 
 namespace AE {
-enum struct WiFiState { Off, Idle, Running };
+enum struct WiFiState { Off, Idle, IBSS, Running };
 }
 
 @interface AERWiFiClient : NSObject
