@@ -98,15 +98,18 @@ struct WiFiMenu {
         return item;
     }
     
-    void update(NSArray<AERNetwork*>* networks,
-                AERMenuItemHandler handler) const noexcept
-    {
+    void removeNetworkItems() const noexcept {
         for (NSMenuItem *item in Ref.itemArray.copy) {
             if (item.tag == NSInteger(Tag::Network)) {
                 [Ref removeItem:item];
             }
         }
-        
+    }
+    
+    void update(NSArray<AERNetwork*>* networks,
+                AERMenuItemHandler handler) const noexcept
+    {
+        removeNetworkItems();
         const auto &menu = Ref;
         const auto index = NSInteger(Tag::Power) + 2;
         [networks enumerateObjectsWithOptions:0 usingBlock:
