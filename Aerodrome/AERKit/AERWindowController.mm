@@ -35,6 +35,15 @@ struct WiFiIcon {
         }();
     }
     
+    static NSImage *Status(WiFiState state) noexcept {
+        switch (state) {
+        case WiFiState::Off:  return [NSImage imageNamed:@"AER-OFF"];
+        case WiFiState::Idle: return [NSImage imageNamed:@"AER-IDLE"];
+        case WiFiState::IBSS: return [NSImage imageNamed:@"AER-IBSS"];
+        default: return [NSImage imageNamed:@"AER-ACTIVE"];
+        }
+    }
+    
 }; // struct WiFiIcon
 
 struct WiFiMenu {
