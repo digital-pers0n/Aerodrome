@@ -131,6 +131,8 @@ EXTERNALLY_RETAINED_END
 - (IBAction)performConnection:(id)sender;
 - (IBAction)cancel:(id)sender;
 
+- (void)didWake:(NSNotification*)n;
+
 @end
 
 
@@ -154,6 +156,9 @@ EXTERNALLY_RETAINED_END
     }];
     
     _menu.Ref.delegate = self;
+    auto nc = NSWorkspace.sharedWorkspace.notificationCenter;
+    [nc addObserver:self selector:@selector(didWake:)
+               name:NSWorkspaceDidWakeNotification object:nil];
     return self;
 }
 
@@ -172,5 +177,9 @@ EXTERNALLY_RETAINED_END
 }
 
 
+//MARK: - Notifications
+
+- (void)didWake:(NSNotification *)n {
+}
 
 @end

@@ -120,6 +120,7 @@ struct WiFiClient {
 
     WiFiState status() const noexcept {
         if (!isPowerOn()) return WiFiState::Off;
+        if (isIBSS()) return WiFiState::IBSS;
         if (isAssociated()) return WiFiState::Running;
         return WiFiState::Idle;
     }
