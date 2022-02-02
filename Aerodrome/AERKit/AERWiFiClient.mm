@@ -417,6 +417,10 @@ struct WiFiClient {
     return _client.isPowerOn();
 }
 
+- (void)setPowerOn:(BOOL)value {
+    _client.setPowerOn(value);
+}
+
 - (void)setOnPowerStateChange:(AERWiFiClientEventHandler)block {
     _onPowerStateChange = block ? [block copy] : id(^{});
 }

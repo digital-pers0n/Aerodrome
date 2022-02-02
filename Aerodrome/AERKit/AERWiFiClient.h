@@ -34,7 +34,7 @@ enum struct WiFiState { Off, Idle, IBSS, Running };
 
 @interface AERWiFiClient : NSObject
 
-@property (nonatomic, readonly, direct, getter=isPowerOn) BOOL powerOn;
+@property (nonatomic, direct, getter=isPowerOn) BOOL powerOn;
 @property (nonatomic, readonly, direct) AE::WiFiState state;
 
 - (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
