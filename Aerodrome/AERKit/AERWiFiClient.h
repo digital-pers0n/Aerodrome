@@ -36,6 +36,7 @@ enum struct WiFiState { Off, Idle, IBSS, Running };
 
 @property (nonatomic, direct, getter=isPowerOn) BOOL powerOn;
 @property (nonatomic, readonly, direct) AE::WiFiState state;
+@property (nonatomic, readonly, direct) NSString *ssidName;
 
 - (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
 - (nullable NSArray<AERNetwork*>*)

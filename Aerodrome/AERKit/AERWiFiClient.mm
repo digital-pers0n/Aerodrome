@@ -264,6 +264,14 @@ struct WiFiClient {
         return get(data);
     }
     
+    int ssid(char name[APPLE80211_MAX_SSID_LEN]) const noexcept {
+        ReqData<char*> data = {
+            .Type = APPLE80211_IOC_SSID, .Value = 0,
+            .Data = name, .Len = APPLE80211_MAX_SSID_LEN
+        };
+        return get(data);
+    }
+    
     int disassociate() const noexcept {
         Req<> data = { .Type = APPLE80211_IOC_DISASSOCIATE };
         return set(data);
@@ -408,6 +416,12 @@ struct WiFiClient {
 }
 
 //MARK: - Properties
+
+- (NSString *)ssidName {
+    char result[APPLE80211_MAX_SSID_LEN]{};
+    _client.ssid(result);
+    return @(result);
+}
 
 - (AE::WiFiState)state {
     return _client.status();
