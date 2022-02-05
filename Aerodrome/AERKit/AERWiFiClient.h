@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, nonatomic) BOOL isIbss;
 @property (readonly, nonatomic, nullable) NSString *countryCode;
 @property (readonly, nonatomic) CWSecurity security;
+@property (readonly, nonatomic) NSDictionary *scanRecord;
 
 @end
 

@@ -310,6 +310,8 @@ struct WiFiClient {
         return result;
     }();
     
+    _scanRecord = [network copyWithZone:nil];
+    
     return self;
 }
 
