@@ -86,6 +86,7 @@ struct WiFiMenu {
         separator();
         Quit = create(@"Quit", Tag::Quit);
         Relaunch = create(@"Relaunch", Tag::Relaunch);
+        Relaunch.keyEquivalentModifierMask = NSEventModifierFlagOption;
         Relaunch.alternate = YES;
     }
     
