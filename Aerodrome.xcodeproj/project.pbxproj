@@ -49,6 +49,7 @@
 		CEEBCB2D27450E7100C97FF0 /* apple80211_ioctl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple80211_ioctl.h; path = AerodromeWiFi/apple80211_ioctl.h; sourceTree = SOURCE_ROOT; };
 		CEF1BB82278AF42400E693F0 /* AERStatusMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERStatusMenuItem.h; sourceTree = "<group>"; };
 		CEF1BB83278AF42400E693F0 /* AERStatusMenuItem.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERStatusMenuItem.mm; sourceTree = "<group>"; };
+		CEF4F6C327B935BA00A60336 /* Dispatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dispatch.h; sourceTree = "<group>"; };
 		CEF8D5822746370200B6A085 /* AERWiFiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERWiFiClient.h; sourceTree = "<group>"; };
 		CEF8D5832746370200B6A085 /* AERWiFiClient.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERWiFiClient.mm; sourceTree = "<group>"; };
 		CEFE5C42276F8801005949B3 /* AERAssociatedObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AERAssociatedObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -136,6 +137,7 @@
 				CEEBCB1D2744E88F00C97FF0 /* AERWindowController.h */,
 				CEEBCB1E2744E88F00C97FF0 /* AERWindowController.mm */,
 				CEEBCB1F2744E88F00C97FF0 /* AERWindowController.xib */,
+				CEF4F6C327B935BA00A60336 /* Dispatch.h */,
 				CEE6906A2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.h */,
 				CEE6906B2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm */,
 			);
