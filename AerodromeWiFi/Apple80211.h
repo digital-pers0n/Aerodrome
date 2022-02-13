@@ -34,7 +34,7 @@ CWErr Apple80211Associate(Apple80211Ref handle, CFDictionaryRef SSID, CFStringRe
 CWErr Apple80211Get(Apple80211Ref ref, CFStringRef chr, uint32_t val, CFTypeRef var, uint32_t var2);
 CWErr Apple80211Set(Apple80211Ref ref, uint32_t type, uint32_t unkn, CFTypeRef var);
 
-char *Apple80211ErrToStr(CWErr errCode);
+const char *Apple80211ErrToStr(int errCode);
 CWErr Apple80211GetIfListCopy(Apple80211Ref handle, CFArrayRef *If_name_array);
 CWErr Apple80211GetInfoCopy(Apple80211Ref wref, CFDictionaryRef *dict);
 CWErr Apple80211CopyValue();

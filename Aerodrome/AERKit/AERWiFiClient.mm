@@ -23,6 +23,24 @@ enum struct WiFiEvent {
 }; // enum struct WiFiEvent
 
 struct WiFiClient {
+    
+    template<typename T, typename Fn> _Nullable id
+    error(const T &var, const Fn &handler) noexcept {
+        const auto code = int(var);
+        auto error = [&](auto domain, id info = nil) {
+            return [[NSError alloc] initWithDomain:domain
+                                              code:code userInfo:info];
+        };
+        if (code < 0) {
+            handler(error(NSPOSIXErrorDomain));
+        } else {
+            handler(error(CWErrorDomain, @{
+                NSLocalizedDescriptionKey : @(Apple80211ErrToStr(code))
+            }));
+        }
+        return nil;
+    }
+    
     Apple80211Ref Ref;
     NSString *IfName;
     
@@ -326,10 +344,10 @@ struct WiFiClient {
     auto err = _client.open();
     auto fail = [&](CWErr code) {
         _client.close();
-        return AERWiFiClientError(code, handler);
+        return _client.error(code, handler);
     };
     
-    if (err != kCWNoErr) return AERWiFiClientError(err, handler);
+    if (err != kCWNoErr) return _client.error(err, handler);
     
     err = _client.eventMonitorInit((__bridge void*)self, CFRunLoopGetMain(),
     [](CWErr e, Apple80211Ref ref, uint32_t event,
@@ -413,7 +431,7 @@ struct WiFiClient {
         }
     }); // scan()
     
-    if (err != kCWNoErr) return AERWiFiClientError(err, errorHandler);
+    if (err != kCWNoErr) return _client.error(err, errorHandler);
     return result;
 }
 
@@ -448,13 +466,6 @@ struct WiFiClient {
 //MARK: - Private
 
 namespace {
-template<typename T, typename Fn> _Nullable id
-AERWiFiClientError(const T &code, const Fn &handler) noexcept {
-    auto domain = code < 0 ? CWErrorDomain : NSPOSIXErrorDomain;
-    auto e = [[NSError alloc] initWithDomain:domain code:code userInfo:nil];
-    handler(e);
-    return nil;
-}
 } // anonymous namespace
 
 @end
