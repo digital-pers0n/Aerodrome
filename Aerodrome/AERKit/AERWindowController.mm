@@ -49,13 +49,13 @@ struct WiFiIcon {
 struct WiFiMenu {
     enum struct Tag {
         Status, Disconnect, Power, Separator, CreateIBSS,
-        Join, Preferences, Quit, Relaunch, Network
+        Preferences, Quit, Relaunch, Network
     }; // enum struct MenuTag
     
     NSMenu *Ref;
     NSStatusItem *StatusItem;
     NSMenuItem *Status, *Disconnect, *Power, *CreateIBSS,
-               *Join, *Preferences, *Quit, *Relaunch;
+               *Preferences, *Quit, *Relaunch;
     WiFiMenu() noexcept {
         
         auto create = [&](NSString *string, Tag tag,
@@ -81,7 +81,6 @@ struct WiFiMenu {
         separator();
         separator();
         CreateIBSS = create(@"Create Network", Tag::CreateIBSS);
-        Join = create(@"Join Other Network...", Tag::Join);
         Preferences = create(@"Preferences...", Tag::Preferences);
         separator();
         Quit = create(@"Quit", Tag::Quit);
