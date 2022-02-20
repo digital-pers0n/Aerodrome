@@ -67,4 +67,8 @@ enum struct WiFiState { Off, Idle, IBSS, Running };
                         error:(void(^)(NSError *error))handler;
 @end
 
+@interface AERWiFiClient (AERWiFiChannels)
+@property (nonatomic, readonly) NSArray<NSNumber*> *channels;
+@end
+
 NS_ASSUME_NONNULL_END

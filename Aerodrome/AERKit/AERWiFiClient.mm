@@ -224,6 +224,28 @@ struct WiFiClient {
         return getSet<T, U>(SIOCSA80211, data);
     }
     
+    int channels(struct apple80211_sup_channel_data *result) const noexcept {
+        ReqData<apple80211_sup_channel_data*> data = {
+            .Type = APPLE80211_IOC_SUPPORTED_CHANNELS, .Value = 0,
+            .Data = result, .Len = sizeof(apple80211_sup_channel_data)
+        };
+        return get(data);
+        
+    }
+
+    NSArray<NSNumber*>* channels() const noexcept {
+        apple80211_sup_channel_data data{};
+        channels(&data);
+        
+        auto result = [NSMutableArray<NSNumber*> new];
+        for (const auto &item : data.supported_channels) {
+            if (item.channel == 0) continue;
+            [result addObject:@(item.channel)];
+        }
+        return result;
+    }
+
+    
     int powerState(apple80211_power_data *power) const noexcept {
         ReqData<apple80211_power_data*> data = {
             .Type = APPLE80211_IOC_POWER, .Value = 0,
@@ -457,6 +479,12 @@ struct WiFiClient {
     
     if (err != kCWNoErr) return _client.error(err, errorHandler);
     return result;
+}
+
+//MARK: - Channels
+
+- (NSArray<NSNumber*>*)channels {
+    return _client.channels();
 }
 
 //MARK: - IBSS
