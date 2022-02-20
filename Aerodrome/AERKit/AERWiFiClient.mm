@@ -112,6 +112,11 @@ struct WiFiClient {
         return done();
     }
     
+    CWErr associate(NSDictionary *network, NSString *password) const noexcept {
+        return Apple80211Associate(Ref, (__bridge CFDictionaryRef)network,
+                                   (__bridge CFStringRef)password);
+    }
+    
     CWErr createIBSSNetwork(NSString *name, int channel) const noexcept {
         auto ssidData = [name dataUsingEncoding:NSUTF8StringEncoding
                            allowLossyConversion:YES];
@@ -389,6 +394,25 @@ struct WiFiClient {
 - (void)dealloc {
     _client.close();
 }
+
+//MARK: - Associate
+
+- (BOOL)associateToNetwork:(AERNetwork *)network password:(NSString *)pass
+                     error:(void (^)(NSError * _Nonnull))handler {
+    auto e = _client.associate(network.scanRecord, pass);
+    if (e != kCWNoErr) {
+        _client.error(e, handler);
+        return NO;
+    }
+    return YES;
+    
+}
+
+- (void)disassociate {
+    _client.disassociate();
+}
+
+//MARK: - Scan
 
 - (nullable NSArray<AERNetwork*>*)scan {
     return [self scanForNetworksWithName:nil];
