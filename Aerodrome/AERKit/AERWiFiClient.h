@@ -40,18 +40,31 @@ enum struct WiFiState { Off, Idle, IBSS, Running };
 @property (nonatomic, readonly, direct) NSString *ssidName;
 
 - (nullable instancetype)initWithErrorHandler:(void(^)(NSError *error))handler;
+@property (nonatomic, copy, null_resettable, direct)
+    AERWiFiClientEventHandler onPowerStateChange;
+@property (nonatomic, copy, null_resettable, direct)
+    AERWiFiClientEventHandler onSSIDChange;
+
+@end
+
+@interface AERWiFiClient (AERWiFiScan)
 - (nullable NSArray<AERNetwork*>*)
     scanForNetworksWithName:(nullable NSString*)name
                       error:(void(^)(NSError *error))errorHandler;
 - (nullable NSArray<AERNetwork*>*)
     scanForNetworksWithName:(nullable NSString*)name;
 - (nullable NSArray<AERNetwork*>*)scan;
+@end
 
-@property (nonatomic, copy, null_resettable, direct)
-    AERWiFiClientEventHandler onPowerStateChange;
-@property (nonatomic, copy, null_resettable, direct)
-    AERWiFiClientEventHandler onSSIDChange;
+@interface AERWiFiClient (AERWiFiAssociate)
+- (void)disassociate;
+- (BOOL)associateToNetwork:(AERNetwork *)network password:(NSString *)pass
+                     error:(void(^)(NSError *error))handler;
+@end
 
+@interface AERWiFiClient (AERWiFiIBSS)
+- (BOOL)startIBSSModeWithName:(NSString *)name channel:(NSInteger)channel
+                        error:(void(^)(NSError *error))handler;
 @end
 
 NS_ASSUME_NONNULL_END

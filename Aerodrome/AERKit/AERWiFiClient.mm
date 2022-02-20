@@ -459,6 +459,18 @@ struct WiFiClient {
     return result;
 }
 
+//MARK: - IBSS
+
+- (BOOL)startIBSSModeWithName:(NSString *)name channel:(NSInteger)channel
+                        error:(void (^)(NSError * _Nonnull))handler {
+    auto e = _client.createIBSSNetwork(name, int(channel));
+    if (e != kCWNoErr) {
+        _client.error(e, handler);
+        return NO;
+    }
+    return YES;
+}
+
 //MARK: - Properties
 
 - (NSString *)ssidName {
