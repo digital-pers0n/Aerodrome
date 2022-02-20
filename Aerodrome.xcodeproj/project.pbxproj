@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE16D0A927C13F9B00BA5A64 /* AERIBSSDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE16D0A727C13F9B00BA5A64 /* AERIBSSDialog.mm */; };
+		CE16D0AA27C13F9B00BA5A64 /* AERIBSSDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE16D0A827C13F9B00BA5A64 /* AERIBSSDialog.xib */; };
 		CE746E352761EAAE00575481 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE746E342761EAAE00575481 /* CoreWLAN.framework */; };
 		CEB1336B27735DA000ED5C1D /* AERNetworkView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB1336A27735DA000ED5C1D /* AERNetworkView.mm */; };
 		CEBAC786273FE1350066A082 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEBAC785273FE1350066A082 /* AppDelegate.mm */; };
@@ -23,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE16D0A627C13F9B00BA5A64 /* AERIBSSDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERIBSSDialog.h; sourceTree = "<group>"; };
+		CE16D0A727C13F9B00BA5A64 /* AERIBSSDialog.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AERIBSSDialog.mm; sourceTree = "<group>"; };
+		CE16D0A827C13F9B00BA5A64 /* AERIBSSDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERIBSSDialog.xib; sourceTree = "<group>"; };
 		CE4F7EAA276CC7FB00FA8E6C /* AERDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERDefines.h; sourceTree = "<group>"; };
 		CE746E342761EAAE00575481 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
 		CEB1336927735DA000ED5C1D /* AERNetworkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERNetworkView.h; sourceTree = "<group>"; };
@@ -136,6 +141,9 @@
 				CEF8D5832746370200B6A085 /* AERWiFiClient.mm */,
 				CEEBCB1D2744E88F00C97FF0 /* AERWindowController.h */,
 				CEEBCB1E2744E88F00C97FF0 /* AERWindowController.mm */,
+				CE16D0A627C13F9B00BA5A64 /* AERIBSSDialog.h */,
+				CE16D0A727C13F9B00BA5A64 /* AERIBSSDialog.mm */,
+				CE16D0A827C13F9B00BA5A64 /* AERIBSSDialog.xib */,
 				CEEBCB1F2744E88F00C97FF0 /* AERWindowController.xib */,
 				CEF4F6C327B935BA00A60336 /* Dispatch.h */,
 				CEE6906A2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.h */,
@@ -205,6 +213,7 @@
 				CEBAC788273FE1390066A082 /* Assets.xcassets in Resources */,
 				CEEBCB212744E88F00C97FF0 /* AERWindowController.xib in Resources */,
 				CEBAC78B273FE1390066A082 /* MainMenu.xib in Resources */,
+				CE16D0AA27C13F9B00BA5A64 /* AERIBSSDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +228,7 @@
 				CED0C2992769EF9500DE6233 /* AERStatusView.mm in Sources */,
 				CEBAC78E273FE1390066A082 /* main.m in Sources */,
 				CEE6906C2770864C00C8FA43 /* NSMenuItem+AERMenuItemAdditions.mm in Sources */,
+				CE16D0A927C13F9B00BA5A64 /* AERIBSSDialog.mm in Sources */,
 				CEF8D5842746370200B6A085 /* AERWiFiClient.mm in Sources */,
 				CEBAC786273FE1350066A082 /* AppDelegate.mm in Sources */,
 				CEF1BB84278AF42400E693F0 /* AERStatusMenuItem.mm in Sources */,
