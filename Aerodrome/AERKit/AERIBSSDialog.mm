@@ -15,25 +15,61 @@
 
 - (IBAction)createNetwork:(id)sender;
 - (IBAction)cancel:(id)sender;
-
 @end
 
 [[clang::objc_direct_members]]
 @implementation AERIBSSDialog {
-    NSArray *_channels;
+    NSArray<NSString*> *_channels;
+    void (^_okHandler)(NSString* _Nonnull, NSInteger);
+    void (^_cancelHandler)(void);
 }
 
+- (NSNibName)windowNibName {
+    return self.className;
+}
+
+- (instancetype)initWithChannels:(NSArray<NSNumber *> *)channels
+                ok:(void (^)(NSString*, NSInteger))okHandler
+            cancel:(void (^)(void))cancelHandler
+{
+    if (!(self = [super init])) return nil;
+    _channels = [&]() -> NSArray<NSString*>* {
+        auto result = [NSMutableArray new];
+        for (NSNumber *object in channels) {
+            [result addObject:object.stringValue];
+        }
+        return result;
+    }();
+    _okHandler = [okHandler copy];
+    _cancelHandler = [cancelHandler copy];
+    return self;
+}
+
+- (void)setStatusText:(NSString *)text {
+    if (!text) {
+        _statusTextField.hidden = YES;
+    } else {
+        _statusTextField.hidden = NO;
+        _statusTextField.stringValue = text;
+    }
+}
+
+- (NSString*)statusText {
+    return _statusTextField.stringValue;
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [_channelNumberPopUp addItemsWithTitles:_channels];
 }
 
 - (IBAction)createNetwork:(id)sender {
+    _okHandler(_networkNameTextField.stringValue,
+               _channelNumberPopUp.selectedItem.title.integerValue);
 }
 
 - (IBAction)cancel:(id)sender {
+    _cancelHandler();
 }
 
 @end

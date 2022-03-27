@@ -11,6 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AERIBSSDialog : NSWindowController
+- (instancetype)initWithChannels:(NSArray<NSNumber*>*)channels
+       ok:(void(^)(NSString *name, NSInteger ch))okHandler
+   cancel:(void(^)(void))cancelHandler;
+
+@property (nonatomic, nullable) NSString *statusText;
 
 @end
 
