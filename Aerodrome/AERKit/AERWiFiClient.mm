@@ -31,7 +31,7 @@ struct WiFiClient {
             return [[NSError alloc] initWithDomain:domain
                                               code:code userInfo:info];
         };
-        if (code < 0) {
+        if (code > 0) {
             handler(error(NSPOSIXErrorDomain));
         } else {
             handler(error(CWErrorDomain, @{
